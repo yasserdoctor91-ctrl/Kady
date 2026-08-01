@@ -1,0 +1,107 @@
+/**
+ * Link Page - Responsive Media Queries
+ * Breakpoints for Laptop, Tablet, Mobile (Landscape & Portrait).
+ */
+
+/* Laptops & Desktop (Under 1024px) */
+@media (max-width: 1024px) {
+  .edit-split-container {
+    flex-direction: column;
+  }
+
+  .edit-preview-panel {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 0;
+    border-left: none;
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-lg);
+  }
+
+  .device-frame {
+    height: 580px;
+  }
+}
+
+/* Tablets (Under 768px) */
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding: var(--space-lg) var(--space-sm);
+  }
+
+  .glass-card {
+    padding: var(--space-lg) var(--space-md);
+    border-radius: 20px;
+  }
+
+  .public-header-bar {
+    padding: 0 var(--space-sm);
+  }
+
+  .profile-avatar {
+    width: 90px;
+    height: 90px;
+  }
+
+  .profile-name {
+    font-size: 1.4rem;
+  }
+
+  .profile-bio {
+    font-size: 0.88rem;
+  }
+
+  .edit-form-panel {
+    padding: var(--space-md);
+  }
+
+  .edit-navbar {
+    padding: 10px 16px;
+  }
+
+  .toast-container {
+    left: var(--space-md);
+    right: var(--space-md);
+    bottom: var(--space-md);
+  }
+
+  .toast {
+    min-width: 100%;
+  }
+
+  .modal-card {
+    padding: var(--space-md);
+  }
+}
+
+/* Mobile Phones (Under 480px) */
+@media (max-width: 480px) {
+  .link-card {
+    padding: 14px 16px;
+    font-size: 0.9rem;
+  }
+
+  .link-card-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .public-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .toolbar-btn {
+    flex: 1;
+    min-width: 100px;
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+
+  .device-frame {
+    width: 100%;
+    max-width: 340px;
+    height: 540px;
+    border-width: 6px;
+  }
+}

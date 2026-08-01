@@ -1,0 +1,172 @@
+/**
+ * Link Page - Design System Variables
+ * Theme tokens, glassmorphism, typography, colors, and shadows.
+ * Clean Minimalism Design System.
+ */
+
+:root {
+  /* Fonts */
+  --font-family-base: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-size-base: 16px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Clean Minimalism Theme Colors (Default Light) */
+  --color-primary: #4f46e5;
+  --color-primary-hover: #4338ca;
+  --color-secondary: #6366f1;
+  --color-accent: #818cf8;
+  
+  --color-bg: #f8fafc;
+  --color-bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --color-surface: #ffffff;
+  --color-surface-hover: #f1f5f9;
+  
+  --color-text: #0f172a;
+  --color-text-secondary: #64748b;
+  --color-text-muted: #94a3b8;
+  --color-border: rgba(226, 232, 240, 0.9);
+  --color-border-focus: rgba(79, 70, 229, 0.5);
+
+  /* Button Variables */
+  --btn-bg: #ffffff;
+  --btn-text: #0f172a;
+  --btn-border: #e2e8f0;
+  --btn-hover: #f8fafc;
+  --btn-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  --btn-radius: 16px;
+
+  /* Card & Glassmorphism */
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(226, 232, 240, 0.8);
+  --card-blur: 16px;
+  --card-radius: 24px;
+  --card-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07);
+
+  /* UI Status Colors */
+  --color-success: #10b981;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
+  --color-info: #3b82f6;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* Transitions */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Light Theme Preset (Clean Minimalism) */
+[data-theme="light"] {
+  --color-bg: #f8fafc;
+  --color-bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --color-surface: #ffffff;
+  --color-surface-hover: #f1f5f9;
+  
+  --color-text: #0f172a;
+  --color-text-secondary: #64748b;
+  --color-text-muted: #94a3b8;
+  --color-border: #e2e8f0;
+  --color-border-focus: rgba(79, 70, 229, 0.5);
+
+  --btn-bg: #ffffff;
+  --btn-text: #0f172a;
+  --btn-border: #e2e8f0;
+  --btn-hover: #f8fafc;
+  --btn-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(226, 232, 240, 0.8);
+  --card-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07);
+}
+
+/* Dark Theme Preset */
+[data-theme="dark"] {
+  --color-bg: #0f172a;
+  --color-bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  --color-surface: rgba(30, 41, 59, 0.85);
+  --color-surface-hover: rgba(51, 65, 85, 0.95);
+  
+  --color-text: #f8fafc;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+  --color-border: rgba(255, 255, 255, 0.12);
+
+  --btn-bg: rgba(255, 255, 255, 0.08);
+  --btn-text: #f8fafc;
+  --btn-border: rgba(255, 255, 255, 0.15);
+  --btn-hover: rgba(255, 255, 255, 0.18);
+  --btn-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+  --card-bg: rgba(30, 41, 59, 0.8);
+  --card-border: rgba(255, 255, 255, 0.12);
+  --card-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
+}
+
+/* Preset Themes */
+[data-theme-preset="clean-minimalism"] {
+  --color-primary: #4f46e5;
+  --color-secondary: #6366f1;
+  --color-bg: #f8fafc;
+  --color-bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --color-surface: #ffffff;
+  --color-text: #0f172a;
+  --color-text-secondary: #64748b;
+  --btn-bg: #ffffff;
+  --btn-text: #0f172a;
+  --btn-border: #e2e8f0;
+  --btn-hover: #f8fafc;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --card-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.06);
+}
+
+[data-theme-preset="dark-luxury"] {
+  --color-primary: #6366f1;
+  --color-secondary: #8b5cf6;
+  --color-bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0284c7 100%);
+}
+
+[data-theme-preset="ocean-breeze"] {
+  --color-primary: #0284c7;
+  --color-secondary: #06b6d4;
+  --color-bg-gradient: linear-gradient(135deg, #0f172a 0%, #0369a1 50%, #0891b2 100%);
+}
+
+[data-theme-preset="sunset-glow"] {
+  --color-primary: #f43f5e;
+  --color-secondary: #fb923c;
+  --color-bg-gradient: linear-gradient(135deg, #18181b 0%, #881337 50%, #9a3412 100%);
+}
+
+[data-theme-preset="emerald-forest"] {
+  --color-primary: #10b981;
+  --color-secondary: #059669;
+  --color-bg-gradient: linear-gradient(135deg, #022c22 0%, #064e3b 50%, #115e59 100%);
+}
+
+[data-theme-preset="clean-paper"] {
+  --color-primary: #18181b;
+  --color-secondary: #3f3f46;
+  --color-bg: #fafafa;
+  --color-bg-gradient: linear-gradient(135deg, #ffffff 0%, #f4f4f5 100%);
+  --color-surface: #ffffff;
+  --color-text: #18181b;
+  --color-text-secondary: #71717a;
+  --btn-bg: #ffffff;
+  --btn-text: #18181b;
+  --btn-border: #e4e4e7;
+  --btn-hover: #f4f4f5;
+  --card-bg: #ffffff;
+  --card-border: #e4e4e7;
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
