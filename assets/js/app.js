@@ -79,9 +79,9 @@ function bindToolbarActions() {
     copyBtn.addEventListener('click', async () => {
       const success = await copyToClipboard(currentUrl);
       if (success) {
-        showToast('Link copied to clipboard!', 'success');
+        showToast('تم نسخ الرابط بنجاح!', 'success');
       } else {
-        showToast('Could not copy link automatically', 'error');
+        showToast('تعذر نسخ الرابط تلقائياً', 'error');
       }
     });
   }
@@ -93,7 +93,7 @@ function bindToolbarActions() {
         try {
           await navigator.share({
             title: document.title,
-            text: 'Check out my links page!',
+            text: 'تعرف على الصفحة الرسمية لـ Kady!',
             url: currentUrl
           });
         } catch (err) {
@@ -120,22 +120,22 @@ function bindToolbarActions() {
       const currentTheme = document.documentElement.getAttribute('data-theme');
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', newTheme);
-      showToast(`Switched to ${newTheme} mode`, 'info');
+      showToast(newTheme === 'dark' ? 'تم التبديل للوضع الليلي' : 'تم التبديل للوضع الصباحي', 'info');
     });
   }
 }
 
 function fallbackShareModal(url) {
   showModal({
-    title: 'Share Website',
+    title: 'مشاركة الموقع',
     content: `
-      <p style="margin-bottom: 12px;">Share this link page with your audience or friends:</p>
+      <p style="margin-bottom: 12px; dir: rtl; text-align: right;">شارك الصفحة الرسمية مع أصدقائك أو عملائك:</p>
       <div style="display: flex; gap: 8px;">
         <input type="text" readonly value="${url}" class="form-input" id="share-modal-input" />
-        <button class="btn btn-primary" id="share-modal-copy-btn">${UI_ICONS.copy} Copy</button>
+        <button class="btn btn-primary" id="share-modal-copy-btn">${UI_ICONS.copy} نسخ</button>
       </div>
     `,
-    confirmText: 'Done',
+    confirmText: 'إغلاق',
     cancelText: '',
     onConfirm: () => true
   });
@@ -146,7 +146,7 @@ function fallbackShareModal(url) {
     if (copyModalBtn && input) {
       copyModalBtn.addEventListener('click', async () => {
         await copyToClipboard(url);
-        showToast('Link copied to clipboard!', 'success');
+        showToast('تم نسخ الرابط بنجاح!', 'success');
       });
     }
   }, 50);
@@ -158,6 +158,15 @@ function openQrModal(url) {
     content: `
       <div style="display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 10px 0;">
         <p style="text-align: center; font-size: 0.95rem; color: var(--color-text-secondary); dir: rtl;">امسح رمز QR باستخدام كاميرا هاتفك لفتح هذه الصفحة مباشرة.</p>
+        <div style="display: flex; align-items: center; gap: 8px; margin-top: 2px;">
+          <span style="font-size: 0.85rem; font-weight: 600; color: var(--color-text);">لون الـ QR:</span>
+          <button class="qr-color-btn" data-color="#382d54" style="width: 26px; height: 26px; border-radius: 50%; background: #382d54; border: 2px solid #ffffff; box-shadow: 0 0 0 2px #382d54; cursor: pointer;" title="أرجواني غامق"></button>
+          <button class="qr-color-btn" data-color="#4f46e5" style="width: 26px; height: 26px; border-radius: 50%; background: #4f46e5; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer;" title="أزرق ملكي"></button>
+          <button class="qr-color-btn" data-color="#d96b9d" style="width: 26px; height: 26px; border-radius: 50%; background: #d96b9d; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer;" title="وردي"></button>
+          <button class="qr-color-btn" data-color="#059669" style="width: 26px; height: 26px; border-radius: 50%; background: #059669; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer;" title="أخضر زمردي"></button>
+          <button class="qr-color-btn" data-color="#0f172a" style="width: 26px; height: 26px; border-radius: 50%; background: #0f172a; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer;" title="أسود"></button>
+          <input type="color" id="qr-custom-color-picker" value="#382d54" style="width: 28px; height: 28px; border: none; border-radius: 50%; cursor: pointer; padding: 0; background: transparent;" title="تخصيص اللون" />
+        </div>
         <div style="background: #ffffff; padding: 16px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); display: flex; justify-content: center; align-items: center;">
           <canvas id="qr-modal-canvas"></canvas>
         </div>
@@ -167,13 +176,40 @@ function openQrModal(url) {
       </div>
     `,
     confirmText: 'إغلاق',
-    cancelText: ''
+    cancelText: '',
+    onConfirm: () => true
   });
 
   setTimeout(() => {
+    let selectedColor = '#382d54';
     const canvas = document.getElementById('qr-modal-canvas');
-    if (canvas) {
-      generateQRCodeCanvas(url, canvas, 220);
+    const updateQr = () => {
+      if (canvas) {
+        generateQRCodeCanvas(url, canvas, 240, {
+          color: selectedColor,
+          bgColor: '#ffffff',
+          showLogo: true,
+          logoUrl: './logo.svg'
+        });
+      }
+    };
+    updateQr();
+
+    document.querySelectorAll('.qr-color-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        selectedColor = e.currentTarget.getAttribute('data-color') || '#382d54';
+        document.querySelectorAll('.qr-color-btn').forEach(b => b.style.boxShadow = '0 1px 3px rgba(0,0,0,0.2)');
+        e.currentTarget.style.boxShadow = `0 0 0 2px ${selectedColor}`;
+        updateQr();
+      });
+    });
+
+    const colorPicker = document.getElementById('qr-custom-color-picker');
+    if (colorPicker) {
+      colorPicker.addEventListener('input', (e) => {
+        selectedColor = e.target.value;
+        updateQr();
+      });
     }
 
     const downloadBtn = document.getElementById('btn-download-qr');

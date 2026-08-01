@@ -40,11 +40,14 @@ export function showToast(message, type = 'info', duration = 3000) {
 }
 
 function removeToast(toast) {
-  if (!toast || toast.classList.contains('toast-hiding')) return;
+  if (!toast || toast.dataset.closing === 'true') return;
+  toast.dataset.closing = 'true';
   toast.classList.add('toast-hiding');
-  toast.addEventListener('animationend', () => {
-    toast.remove();
-  });
+  const removeEl = () => {
+    if (toast.parentNode) toast.remove();
+  };
+  toast.addEventListener('animationend', removeEl, { once: true });
+  setTimeout(removeEl, 250);
 }
 
 // Modal Dialog System
@@ -75,8 +78,16 @@ export function showModal({ title, content, confirmText = 'Confirm', cancelText 
   document.body.appendChild(backdrop);
 
   const close = () => {
+    if (backdrop.dataset.closing === 'true') return;
+    backdrop.dataset.closing = 'true';
     backdrop.classList.add('modal-closing');
-    backdrop.addEventListener('animationend', () => backdrop.remove());
+    const removeModal = () => {
+      if (backdrop.parentNode) {
+        backdrop.remove();
+      }
+    };
+    backdrop.addEventListener('animationend', removeModal, { once: true });
+    setTimeout(removeModal, 220);
   };
 
   backdrop.querySelector('.modal-close')?.addEventListener('click', () => {
@@ -239,23 +250,59 @@ export function compressImage(file, maxWidth = 500, maxHeight = 500, quality = 0
 
 /**
  * Real Standard ISO/IEC 18004 QR Code Generator
- * Draws a fully functional, 100% scannable QR Code using HTML5 Canvas
+ * Draws a fully functional, 100% scannable QR Code using HTML5 Canvas with centered readable logo
  */
-export function generateQRCodeCanvas(text, canvas, size = 220) {
+export function generateQRCodeCanvas(text, canvas, size = 220, options = {}) {
   if (!canvas) return;
   const targetUrl = text || window.location.href;
+  const darkColor = options.color || '#382d54';
+  const lightColor = options.bgColor || '#ffffff';
+  const showLogo = options.showLogo !== false;
+  const logoUrl = options.logoUrl || './logo.svg';
   
   QRCode.toCanvas(canvas, targetUrl, {
     width: size,
     margin: 2,
     color: {
-      dark: '#1e1b4b',
-      light: '#ffffff'
+      dark: darkColor,
+      light: lightColor
     },
-    errorCorrectionLevel: 'M'
+    errorCorrectionLevel: 'H'
   }, function (error) {
     if (error) {
       console.error('Error generating QR code:', error);
+      return;
+    }
+    if (showLogo) {
+      const ctx = canvas.getContext('2d');
+      const logoSize = Math.round(size * 0.22);
+      const centerX = size / 2;
+      const centerY = size / 2;
+
+      ctx.save();
+      ctx.fillStyle = lightColor;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, (logoSize / 2) + 6, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.lineWidth = 2.5;
+      ctx.strokeStyle = darkColor;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, logoSize / 2, 0, Math.PI * 2);
+      ctx.clip();
+
+      const logoImg = new Image();
+      logoImg.crossOrigin = 'anonymous';
+      logoImg.onload = () => {
+        ctx.drawImage(logoImg, centerX - (logoSize / 2), centerY - (logoSize / 2), logoSize, logoSize);
+        ctx.restore();
+      };
+      logoImg.onerror = () => {
+        ctx.restore();
+      };
+      logoImg.src = logoUrl;
     }
   });
 }

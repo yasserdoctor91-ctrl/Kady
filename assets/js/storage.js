@@ -3,7 +3,7 @@
  * Manages LocalStorage persistence, defaults, export, and import.
  */
 
-const STORAGE_KEY = 'linkpage_settings_v8';
+const STORAGE_KEY = 'linkpage_settings_v16';
 
 export const DEFAULT_SETTINGS = {
   brand: {
@@ -12,11 +12,11 @@ export const DEFAULT_SETTINGS = {
     website: ''
   },
   logo: {
-    url: '', // No default logo
+    url: './logo.svg', // Base64 data URL or external image URL
     badgeText: 'نشط'
   },
   profile: {
-    avatar: '', // No default photo
+    avatar: './logo.svg',
     badge: 'نشط',
     verified: true
   },
@@ -53,45 +53,50 @@ export const DEFAULT_SETTINGS = {
   links: [
     {
       id: 'l1',
-      platform: 'WhatsApp',
-      label: 'تواصل عبر واتساب',
-      url: 'https://iwtsp.com/201005019951',
-      enabled: true,
-      featured: true,
-      badge: 'مباشر'
-    },
-    {
-      id: 'l2',
       platform: 'Facebook',
       label: 'صفحتنا على فيسبوك',
       url: 'https://www.facebook.com/share/1BU8LP7iX8/',
       enabled: true,
-      featured: false,
-      badge: ''
+      featured: true,
+      badge: 'مميّز'
     },
     {
-      id: 'l3',
+      id: 'l2',
       platform: 'TikTok',
       label: 'حسابنا على تيك توك',
       url: 'https://www.tiktok.com/@user5079433482615?_r=1&_t=ZS-98WAJ3ILOaO',
       enabled: true,
-      featured: false,
+      featured: true,
       badge: ''
     },
     {
-      id: 'l4',
+      id: 'l3',
       platform: 'Instagram',
       label: 'حسابنا على إنستغرام',
       url: 'https://www.instagram.com/kdy.kady?igsh=cmM1dHBvaXp1ZGpv',
       enabled: true,
       featured: false,
       badge: ''
+    },
+    {
+      id: 'l4',
+      platform: 'WhatsApp',
+      label: 'تواصل عبر واتساب',
+      url: 'https://iwtsp.com/201005019951',
+      enabled: true,
+      featured: true,
+      badge: 'مباشر'
     }
   ],
   seo: {
     metaTitle: 'Kady | متجر بيع مستحضرات تجميل واكسسوارات',
-    metaDescription: 'متجر بيع مستحضرات تجميل واكسسوارات - متجر بيع بالتجزئة والجملة',
-    keywords: 'Kady, مستحضرات تجميل, اكسسوارات, بيع بالتجزئة, بيع بالجملة, كادي'
+    metaDescription: 'متجر بيع مستحضرات تجميل واكسسوارات - متجر بيع بالتجزئة والجملة - تواصل معنا عبر فيسبوك، تيك توك، إنستغرام، وواتساب.',
+    keywords: 'Kady, كادي, مستحضرات تجميل, اكسسوارات, تجزئة, جملة, تجميل'
+  },
+  qr: {
+    color: '#382d54',
+    bgColor: '#ffffff',
+    showLogo: true
   }
 };
 
@@ -99,7 +104,7 @@ let inMemorySettings = null;
 
 function mergeWithDefaults(parsed) {
   if (!parsed || typeof parsed !== 'object') return { ...DEFAULT_SETTINGS };
-  return {
+  const merged = {
     ...DEFAULT_SETTINGS,
     ...parsed,
     brand: { ...DEFAULT_SETTINGS.brand, ...(parsed.brand || {}) },
@@ -110,8 +115,16 @@ function mergeWithDefaults(parsed) {
     typography: { ...DEFAULT_SETTINGS.typography, ...(parsed.typography || {}) },
     seo: { ...DEFAULT_SETTINGS.seo, ...(parsed.seo || {}) },
     auth: { ...DEFAULT_SETTINGS.auth, ...(parsed.auth || {}) },
+    qr: { ...DEFAULT_SETTINGS.qr, ...(parsed.qr || {}) },
     links: Array.isArray(parsed.links) ? parsed.links : DEFAULT_SETTINGS.links
   };
+  if (!merged.logo.url || merged.logo.url.includes('eldoctor_logo') || merged.logo.url.includes('el doctor logo')) {
+    merged.logo.url = './logo.svg';
+  }
+  if (!merged.profile.avatar || merged.profile.avatar.includes('eldoctor_logo') || merged.profile.avatar.includes('el doctor logo')) {
+    merged.profile.avatar = './logo.svg';
+  }
+  return merged;
 }
 
 /**

@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kady | لوحة التحكم وتخصيص الروابط</title>
+  <title>Link Page Customization Editor</title>
   
   <!-- Favicon SVG -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234f46e5'><circle cx='12' cy='12' r='10'/></svg>" />
+  <link rel="icon" type="image/svg+xml" href="./logo.svg" />
 
   <!-- Google Fonts Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -88,14 +88,54 @@
         </div>
       </section>
 
-      <!-- Section 2: Profile Badges & Status -->
+      <!-- Section 2: Logo & Profile Picture -->
       <section class="edit-section-card">
         <h2 class="section-card-title">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-          Profile Badges & Status (شارة الحالة والتوثيق)
+          Profile & Logo Media (صورة الملف الشخصي واللوجو)
         </h2>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md);">
+          <!-- Profile Photo -->
+          <div>
+            <label class="form-label" style="margin-bottom: 8px;">صورة الملف الشخصي (Profile Photo PNG / Image)</label>
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+              <img id="avatar-preview-img" src="" alt="Avatar" style="width: 60px; height: 60px; border-radius: 14px; object-fit: contain; background: #fff; padding: 4px; border: 2px solid var(--color-border);" />
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <label class="btn btn-secondary btn-sm" style="cursor: pointer;">
+                  📁 رفع صورة PNG / Upload Photo
+                  <input type="file" id="avatar-file-input" accept="image/*" style="display: none;" />
+                </label>
+                <button type="button" id="btn-remove-avatar" class="btn btn-danger btn-sm">إعادة للافتراضي</button>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" for="profile-avatar-path" style="font-size: 0.8rem; color: var(--color-text-secondary);">مسار الصورة أو الرابط (PNG Image Path / URL)</label>
+              <input type="text" id="profile-avatar-path" class="form-input" placeholder="el doctor logo-01.png" style="font-size: 0.85rem;" />
+            </div>
+          </div>
+
+          <!-- Brand Logo -->
+          <div>
+            <label class="form-label" style="margin-bottom: 8px;">شعار العلامة التجارية (Brand Logo)</label>
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+              <img id="logo-preview-img" src="" alt="Logo" style="width: 50px; height: 50px; border-radius: 12px; object-fit: contain; background: #fff; padding: 4px; border: 2px solid var(--color-border); display: none;" />
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <label class="btn btn-secondary btn-sm" style="cursor: pointer;">
+                  📁 رفع لوجو / Upload Logo
+                  <input type="file" id="logo-file-input" accept="image/*" style="display: none;" />
+                </label>
+                <button type="button" id="btn-remove-logo" class="btn btn-danger btn-sm">حذف اللوجو</button>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" for="logo-url-path" style="font-size: 0.8rem; color: var(--color-text-secondary);">مسار اللوجو أو الرابط (Logo Path / URL)</label>
+              <input type="text" id="logo-url-path" class="form-input" placeholder="/assets/images/eldoctor_logo.svg" style="font-size: 0.85rem;" />
+            </div>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-top: 16px;">
           <div class="form-group">
             <label class="form-label" for="profile-badge">شارة الحالة (Status Pill Badge)</label>
             <input type="text" id="profile-badge" class="form-input" placeholder="e.g. نشط" />

@@ -12,7 +12,19 @@ export function renderPreview(settings, containerElement) {
   // Apply typography and colors to the target document root or container
   applyThemeStyles(settings, containerElement);
 
-  const { brand, profile, links, typography } = settings;
+  const { brand, logo, profile, links, typography } = settings;
+
+  // Profile Avatar & Logo HTML sources
+  let avatarSrc = (profile && profile.avatar) || './logo.svg';
+  if (avatarSrc.includes('eldoctor_logo') || avatarSrc.includes('el doctor logo')) {
+    avatarSrc = './logo.svg';
+  } else if (!avatarSrc.startsWith('http') && !avatarSrc.startsWith('data:') && !avatarSrc.startsWith('/') && !avatarSrc.startsWith('assets/') && !avatarSrc.startsWith('.')) {
+    avatarSrc = './' + avatarSrc;
+  }
+  let logoSrc = logo ? logo.url : '';
+  if (logoSrc.includes('eldoctor_logo') || logoSrc.includes('el doctor logo')) {
+    logoSrc = './logo.svg';
+  }
 
   // Filter enabled links
   const activeLinks = (links || []).filter(l => l.enabled);
@@ -30,6 +42,12 @@ export function renderPreview(settings, containerElement) {
     linksHtml = activeLinks.map((link, idx) => {
       const isFeatured = link.featured;
       let platformIcon = getPlatformIcon(link.platform);
+
+      // Add logo image for Website link card if available
+      if (link.platform === 'Website' && (logoSrc || avatarSrc)) {
+        const logoImg = logoSrc || avatarSrc;
+        platformIcon = `<img src="${escapeHtml(logoImg)}" alt="Website Logo" class="website-link-icon-img" style="width: 26px; height: 26px; object-fit: contain; border-radius: 6px; background: #ffffff; padding: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);" onerror="this.onerror=null; this.outerHTML='${escapeHtml(getPlatformIcon('Website'))}';" />`;
+      }
 
       const staggerClass = `stagger-${(idx % 7) + 1}`;
 
@@ -55,6 +73,15 @@ export function renderPreview(settings, containerElement) {
   // Render Full Bio Card Structure inside target container
   containerElement.innerHTML = `
     <div class="profile-hero">
+      <div class="avatar-container">
+        <img src="${escapeHtml(avatarSrc)}" alt="${escapeHtml(brand.name)}" class="profile-avatar" onerror="this.onerror=null; this.src='./logo.svg';" />
+        ${logoSrc && logoSrc !== avatarSrc ? `
+          <div class="brand-logo-badge">
+            <img src="${escapeHtml(logoSrc)}" alt="Logo" />
+          </div>
+        ` : ''}
+      </div>
+
       <div class="profile-identity">
         <div class="brand-title-row">
           <h1 class="profile-name">${escapeHtml(brand.name || 'Your Name')}</h1>
@@ -65,7 +92,7 @@ export function renderPreview(settings, containerElement) {
         
         ${brand.website ? `
           <a href="${escapeHtml(brand.website)}" target="_blank" rel="noopener noreferrer" class="website-pill-btn">
-            ${getPlatformIcon('Website')}
+            ${(logoSrc || avatarSrc) ? `<img src="${escapeHtml(logoSrc || avatarSrc)}" alt="Website Logo" style="width: 20px; height: 20px; object-fit: contain; border-radius: 4px; background: #ffffff; padding: 2px;" onerror="this.onerror=null; this.src='./logo.svg';" />` : getPlatformIcon('Website')}
             <span>${escapeHtml(brand.website.replace(/^https?:\/\//, ''))}</span>
             <span style="opacity: 0.7;">${UI_ICONS.externalLink}</span>
           </a>

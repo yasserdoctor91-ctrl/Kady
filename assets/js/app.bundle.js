@@ -2104,7 +2104,7 @@
   });
 
   // assets/js/storage.js
-  var STORAGE_KEY = "linkpage_settings_v8";
+  var STORAGE_KEY = "linkpage_settings_v16";
   var DEFAULT_SETTINGS = {
     brand: {
       name: "Kady",
@@ -2112,13 +2112,12 @@
       website: ""
     },
     logo: {
-      url: "",
-      // No default logo
+      url: "./logo.svg",
+      // Base64 data URL or external image URL
       badgeText: "\u0646\u0634\u0637"
     },
     profile: {
-      avatar: "",
-      // No default photo
+      avatar: "./logo.svg",
       badge: "\u0646\u0634\u0637",
       verified: true
     },
@@ -2156,51 +2155,56 @@
     links: [
       {
         id: "l1",
-        platform: "WhatsApp",
-        label: "\u062A\u0648\u0627\u0635\u0644 \u0639\u0628\u0631 \u0648\u0627\u062A\u0633\u0627\u0628",
-        url: "https://iwtsp.com/201005019951",
-        enabled: true,
-        featured: true,
-        badge: "\u0645\u0628\u0627\u0634\u0631"
-      },
-      {
-        id: "l2",
         platform: "Facebook",
         label: "\u0635\u0641\u062D\u062A\u0646\u0627 \u0639\u0644\u0649 \u0641\u064A\u0633\u0628\u0648\u0643",
         url: "https://www.facebook.com/share/1BU8LP7iX8/",
         enabled: true,
-        featured: false,
-        badge: ""
+        featured: true,
+        badge: "\u0645\u0645\u064A\u0651\u0632"
       },
       {
-        id: "l3",
+        id: "l2",
         platform: "TikTok",
         label: "\u062D\u0633\u0627\u0628\u0646\u0627 \u0639\u0644\u0649 \u062A\u064A\u0643 \u062A\u0648\u0643",
         url: "https://www.tiktok.com/@user5079433482615?_r=1&_t=ZS-98WAJ3ILOaO",
         enabled: true,
-        featured: false,
+        featured: true,
         badge: ""
       },
       {
-        id: "l4",
+        id: "l3",
         platform: "Instagram",
         label: "\u062D\u0633\u0627\u0628\u0646\u0627 \u0639\u0644\u0649 \u0625\u0646\u0633\u062A\u063A\u0631\u0627\u0645",
         url: "https://www.instagram.com/kdy.kady?igsh=cmM1dHBvaXp1ZGpv",
         enabled: true,
         featured: false,
         badge: ""
+      },
+      {
+        id: "l4",
+        platform: "WhatsApp",
+        label: "\u062A\u0648\u0627\u0635\u0644 \u0639\u0628\u0631 \u0648\u0627\u062A\u0633\u0627\u0628",
+        url: "https://iwtsp.com/201005019951",
+        enabled: true,
+        featured: true,
+        badge: "\u0645\u0628\u0627\u0634\u0631"
       }
     ],
     seo: {
       metaTitle: "Kady | \u0645\u062A\u062C\u0631 \u0628\u064A\u0639 \u0645\u0633\u062A\u062D\u0636\u0631\u0627\u062A \u062A\u062C\u0645\u064A\u0644 \u0648\u0627\u0643\u0633\u0633\u0648\u0627\u0631\u0627\u062A",
-      metaDescription: "\u0645\u062A\u062C\u0631 \u0628\u064A\u0639 \u0645\u0633\u062A\u062D\u0636\u0631\u0627\u062A \u062A\u062C\u0645\u064A\u0644 \u0648\u0627\u0643\u0633\u0633\u0648\u0627\u0631\u0627\u062A - \u0645\u062A\u062C\u0631 \u0628\u064A\u0639 \u0628\u0627\u0644\u062A\u062C\u0632\u0626\u0629 \u0648\u0627\u0644\u062C\u0645\u0644\u0629",
-      keywords: "Kady, \u0645\u0633\u062A\u062D\u0636\u0631\u0627\u062A \u062A\u062C\u0645\u064A\u0644, \u0627\u0643\u0633\u0633\u0648\u0627\u0631\u0627\u062A, \u0628\u064A\u0639 \u0628\u0627\u0644\u062A\u062C\u0632\u0626\u0629, \u0628\u064A\u0639 \u0628\u0627\u0644\u062C\u0645\u0644\u0629, \u0643\u0627\u062F\u064A"
+      metaDescription: "\u0645\u062A\u062C\u0631 \u0628\u064A\u0639 \u0645\u0633\u062A\u062D\u0636\u0631\u0627\u062A \u062A\u062C\u0645\u064A\u0644 \u0648\u0627\u0643\u0633\u0633\u0648\u0627\u0631\u0627\u062A - \u0645\u062A\u062C\u0631 \u0628\u064A\u0639 \u0628\u0627\u0644\u062A\u062C\u0632\u0626\u0629 \u0648\u0627\u0644\u062C\u0645\u0644\u0629 - \u062A\u0648\u0627\u0635\u0644 \u0645\u0639\u0646\u0627 \u0639\u0628\u0631 \u0641\u064A\u0633\u0628\u0648\u0643\u060C \u062A\u064A\u0643 \u062A\u0648\u0643\u060C \u0625\u0646\u0633\u062A\u063A\u0631\u0627\u0645\u060C \u0648\u0648\u0627\u062A\u0633\u0627\u0628.",
+      keywords: "Kady, \u0643\u0627\u062F\u064A, \u0645\u0633\u062A\u062D\u0636\u0631\u0627\u062A \u062A\u062C\u0645\u064A\u0644, \u0627\u0643\u0633\u0633\u0648\u0627\u0631\u0627\u062A, \u062A\u062C\u0632\u0626\u0629, \u062C\u0645\u0644\u0629, \u062A\u062C\u0645\u064A\u0644"
+    },
+    qr: {
+      color: "#382d54",
+      bgColor: "#ffffff",
+      showLogo: true
     }
   };
   var inMemorySettings = null;
   function mergeWithDefaults(parsed) {
     if (!parsed || typeof parsed !== "object") return { ...DEFAULT_SETTINGS };
-    return {
+    const merged = {
       ...DEFAULT_SETTINGS,
       ...parsed,
       brand: { ...DEFAULT_SETTINGS.brand, ...parsed.brand || {} },
@@ -2211,8 +2215,16 @@
       typography: { ...DEFAULT_SETTINGS.typography, ...parsed.typography || {} },
       seo: { ...DEFAULT_SETTINGS.seo, ...parsed.seo || {} },
       auth: { ...DEFAULT_SETTINGS.auth, ...parsed.auth || {} },
+      qr: { ...DEFAULT_SETTINGS.qr, ...parsed.qr || {} },
       links: Array.isArray(parsed.links) ? parsed.links : DEFAULT_SETTINGS.links
     };
+    if (!merged.logo.url || merged.logo.url.includes("eldoctor_logo") || merged.logo.url.includes("el doctor logo")) {
+      merged.logo.url = "./logo.svg";
+    }
+    if (!merged.profile.avatar || merged.profile.avatar.includes("eldoctor_logo") || merged.profile.avatar.includes("el doctor logo")) {
+      merged.profile.avatar = "./logo.svg";
+    }
+    return merged;
   }
   function loadSettings() {
     let loadedRaw = null;
@@ -2440,11 +2452,14 @@
     setTimeout(() => removeToast(toast), duration);
   }
   function removeToast(toast) {
-    if (!toast || toast.classList.contains("toast-hiding")) return;
+    if (!toast || toast.dataset.closing === "true") return;
+    toast.dataset.closing = "true";
     toast.classList.add("toast-hiding");
-    toast.addEventListener("animationend", () => {
-      toast.remove();
-    });
+    const removeEl = () => {
+      if (toast.parentNode) toast.remove();
+    };
+    toast.addEventListener("animationend", removeEl, { once: true });
+    setTimeout(removeEl, 250);
   }
   function showModal({ title, content, confirmText = "Confirm", cancelText = "Cancel", type = "info", onConfirm, onCancel }) {
     const existingModal = document.getElementById("app-modal");
@@ -2469,8 +2484,16 @@
   `;
     document.body.appendChild(backdrop);
     const close = () => {
+      if (backdrop.dataset.closing === "true") return;
+      backdrop.dataset.closing = "true";
       backdrop.classList.add("modal-closing");
-      backdrop.addEventListener("animationend", () => backdrop.remove());
+      const removeModal = () => {
+        if (backdrop.parentNode) {
+          backdrop.remove();
+        }
+      };
+      backdrop.addEventListener("animationend", removeModal, { once: true });
+      setTimeout(removeModal, 220);
     };
     backdrop.querySelector(".modal-close")?.addEventListener("click", () => {
       close();
@@ -2522,20 +2545,52 @@
       return false;
     }
   }
-  function generateQRCodeCanvas(text, canvas, size = 220) {
+  function generateQRCodeCanvas(text, canvas, size = 220, options = {}) {
     if (!canvas) return;
     const targetUrl = text || window.location.href;
+    const darkColor = options.color || "#382d54";
+    const lightColor = options.bgColor || "#ffffff";
+    const showLogo = options.showLogo !== false;
+    const logoUrl = options.logoUrl || "./logo.svg";
     import_qrcode.default.toCanvas(canvas, targetUrl, {
       width: size,
       margin: 2,
       color: {
-        dark: "#1e1b4b",
-        light: "#ffffff"
+        dark: darkColor,
+        light: lightColor
       },
-      errorCorrectionLevel: "M"
+      errorCorrectionLevel: "H"
     }, function(error) {
       if (error) {
         console.error("Error generating QR code:", error);
+        return;
+      }
+      if (showLogo) {
+        const ctx = canvas.getContext("2d");
+        const logoSize = Math.round(size * 0.22);
+        const centerX = size / 2;
+        const centerY = size / 2;
+        ctx.save();
+        ctx.fillStyle = lightColor;
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, logoSize / 2 + 6, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.lineWidth = 2.5;
+        ctx.strokeStyle = darkColor;
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, logoSize / 2, 0, Math.PI * 2);
+        ctx.clip();
+        const logoImg = new Image();
+        logoImg.crossOrigin = "anonymous";
+        logoImg.onload = () => {
+          ctx.drawImage(logoImg, centerX - logoSize / 2, centerY - logoSize / 2, logoSize, logoSize);
+          ctx.restore();
+        };
+        logoImg.onerror = () => {
+          ctx.restore();
+        };
+        logoImg.src = logoUrl;
       }
     });
   }
@@ -2544,7 +2599,17 @@
   function renderPreview(settings, containerElement) {
     if (!containerElement || !settings) return;
     applyThemeStyles(settings, containerElement);
-    const { brand, profile, links, typography } = settings;
+    const { brand, logo, profile, links, typography } = settings;
+    let avatarSrc = profile && profile.avatar || "./logo.svg";
+    if (avatarSrc.includes("eldoctor_logo") || avatarSrc.includes("el doctor logo")) {
+      avatarSrc = "./logo.svg";
+    } else if (!avatarSrc.startsWith("http") && !avatarSrc.startsWith("data:") && !avatarSrc.startsWith("/") && !avatarSrc.startsWith("assets/") && !avatarSrc.startsWith(".")) {
+      avatarSrc = "./" + avatarSrc;
+    }
+    let logoSrc = logo ? logo.url : "";
+    if (logoSrc.includes("eldoctor_logo") || logoSrc.includes("el doctor logo")) {
+      logoSrc = "./logo.svg";
+    }
     const activeLinks = (links || []).filter((l) => l.enabled);
     let linksHtml = "";
     if (activeLinks.length === 0) {
@@ -2558,6 +2623,10 @@
       linksHtml = activeLinks.map((link, idx) => {
         const isFeatured = link.featured;
         let platformIcon = getPlatformIcon(link.platform);
+        if (link.platform === "Website" && (logoSrc || avatarSrc)) {
+          const logoImg = logoSrc || avatarSrc;
+          platformIcon = `<img src="${escapeHtml(logoImg)}" alt="Website Logo" class="website-link-icon-img" style="width: 26px; height: 26px; object-fit: contain; border-radius: 6px; background: #ffffff; padding: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);" onerror="this.onerror=null; this.outerHTML='${escapeHtml(getPlatformIcon("Website"))}';" />`;
+        }
         const staggerClass = `stagger-${idx % 7 + 1}`;
         return `
         <a href="${escapeHtml(link.url)}" 
@@ -2579,6 +2648,15 @@
     }
     containerElement.innerHTML = `
     <div class="profile-hero">
+      <div class="avatar-container">
+        <img src="${escapeHtml(avatarSrc)}" alt="${escapeHtml(brand.name)}" class="profile-avatar" onerror="this.onerror=null; this.src='./logo.svg';" />
+        ${logoSrc && logoSrc !== avatarSrc ? `
+          <div class="brand-logo-badge">
+            <img src="${escapeHtml(logoSrc)}" alt="Logo" />
+          </div>
+        ` : ""}
+      </div>
+
       <div class="profile-identity">
         <div class="brand-title-row">
           <h1 class="profile-name">${escapeHtml(brand.name || "Your Name")}</h1>
@@ -2589,7 +2667,7 @@
         
         ${brand.website ? `
           <a href="${escapeHtml(brand.website)}" target="_blank" rel="noopener noreferrer" class="website-pill-btn">
-            ${getPlatformIcon("Website")}
+            ${logoSrc || avatarSrc ? `<img src="${escapeHtml(logoSrc || avatarSrc)}" alt="Website Logo" style="width: 20px; height: 20px; object-fit: contain; border-radius: 4px; background: #ffffff; padding: 2px;" onerror="this.onerror=null; this.src='./logo.svg';" />` : getPlatformIcon("Website")}
             <span>${escapeHtml(brand.website.replace(/^https?:\/\//, ""))}</span>
             <span style="opacity: 0.7;">${UI_ICONS.externalLink}</span>
           </a>
@@ -2729,9 +2807,9 @@
       copyBtn.addEventListener("click", async () => {
         const success = await copyToClipboard(currentUrl);
         if (success) {
-          showToast("Link copied to clipboard!", "success");
+          showToast("\u062A\u0645 \u0646\u0633\u062E \u0627\u0644\u0631\u0627\u0628\u0637 \u0628\u0646\u062C\u0627\u062D!", "success");
         } else {
-          showToast("Could not copy link automatically", "error");
+          showToast("\u062A\u0639\u0630\u0631 \u0646\u0633\u062E \u0627\u0644\u0631\u0627\u0628\u0637 \u062A\u0644\u0642\u0627\u0626\u064A\u0627\u064B", "error");
         }
       });
     }
@@ -2741,7 +2819,7 @@
           try {
             await navigator.share({
               title: document.title,
-              text: "Check out my links page!",
+              text: "\u062A\u0639\u0631\u0641 \u0639\u0644\u0649 \u0627\u0644\u0635\u0641\u062D\u0629 \u0627\u0644\u0631\u0633\u0645\u064A\u0629 \u0644\u0640 Kady!",
               url: currentUrl
             });
           } catch (err) {
@@ -2764,21 +2842,21 @@
         const currentTheme = document.documentElement.getAttribute("data-theme");
         const newTheme = currentTheme === "dark" ? "light" : "dark";
         document.documentElement.setAttribute("data-theme", newTheme);
-        showToast(`Switched to ${newTheme} mode`, "info");
+        showToast(newTheme === "dark" ? "\u062A\u0645 \u0627\u0644\u062A\u0628\u062F\u064A\u0644 \u0644\u0644\u0648\u0636\u0639 \u0627\u0644\u0644\u064A\u0644\u064A" : "\u062A\u0645 \u0627\u0644\u062A\u0628\u062F\u064A\u0644 \u0644\u0644\u0648\u0636\u0639 \u0627\u0644\u0635\u0628\u0627\u062D\u064A", "info");
       });
     }
   }
   function fallbackShareModal(url) {
     showModal({
-      title: "Share Website",
+      title: "\u0645\u0634\u0627\u0631\u0643\u0629 \u0627\u0644\u0645\u0648\u0642\u0639",
       content: `
-      <p style="margin-bottom: 12px;">Share this link page with your audience or friends:</p>
+      <p style="margin-bottom: 12px; dir: rtl; text-align: right;">\u0634\u0627\u0631\u0643 \u0627\u0644\u0635\u0641\u062D\u0629 \u0627\u0644\u0631\u0633\u0645\u064A\u0629 \u0645\u0639 \u0623\u0635\u062F\u0642\u0627\u0626\u0643 \u0623\u0648 \u0639\u0645\u0644\u0627\u0626\u0643:</p>
       <div style="display: flex; gap: 8px;">
         <input type="text" readonly value="${url}" class="form-input" id="share-modal-input" />
-        <button class="btn btn-primary" id="share-modal-copy-btn">${UI_ICONS.copy} Copy</button>
+        <button class="btn btn-primary" id="share-modal-copy-btn">${UI_ICONS.copy} \u0646\u0633\u062E</button>
       </div>
     `,
-      confirmText: "Done",
+      confirmText: "\u0625\u063A\u0644\u0627\u0642",
       cancelText: "",
       onConfirm: () => true
     });
@@ -2788,7 +2866,7 @@
       if (copyModalBtn && input) {
         copyModalBtn.addEventListener("click", async () => {
           await copyToClipboard(url);
-          showToast("Link copied to clipboard!", "success");
+          showToast("\u062A\u0645 \u0646\u0633\u062E \u0627\u0644\u0631\u0627\u0628\u0637 \u0628\u0646\u062C\u0627\u062D!", "success");
         });
       }
     }, 50);
@@ -2799,6 +2877,15 @@
       content: `
       <div style="display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 10px 0;">
         <p style="text-align: center; font-size: 0.95rem; color: var(--color-text-secondary); dir: rtl;">\u0627\u0645\u0633\u062D \u0631\u0645\u0632 QR \u0628\u0627\u0633\u062A\u062E\u062F\u0627\u0645 \u0643\u0627\u0645\u064A\u0631\u0627 \u0647\u0627\u062A\u0641\u0643 \u0644\u0641\u062A\u062D \u0647\u0630\u0647 \u0627\u0644\u0635\u0641\u062D\u0629 \u0645\u0628\u0627\u0634\u0631\u0629.</p>
+        <div style="display: flex; align-items: center; gap: 8px; margin-top: 2px;">
+          <span style="font-size: 0.85rem; font-weight: 600; color: var(--color-text);">\u0644\u0648\u0646 \u0627\u0644\u0640 QR:</span>
+          <button class="qr-color-btn" data-color="#382d54" style="width: 26px; height: 26px; border-radius: 50%; background: #382d54; border: 2px solid #ffffff; box-shadow: 0 0 0 2px #382d54; cursor: pointer;" title="\u0623\u0631\u062C\u0648\u0627\u0646\u064A \u063A\u0627\u0645\u0642"></button>
+          <button class="qr-color-btn" data-color="#4f46e5" style="width: 26px; height: 26px; border-radius: 50%; background: #4f46e5; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer;" title="\u0623\u0632\u0631\u0642 \u0645\u0644\u0643\u064A"></button>
+          <button class="qr-color-btn" data-color="#d96b9d" style="width: 26px; height: 26px; border-radius: 50%; background: #d96b9d; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer;" title="\u0648\u0631\u062F\u064A"></button>
+          <button class="qr-color-btn" data-color="#059669" style="width: 26px; height: 26px; border-radius: 50%; background: #059669; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer;" title="\u0623\u062E\u0636\u0631 \u0632\u0645\u0631\u062F\u064A"></button>
+          <button class="qr-color-btn" data-color="#0f172a" style="width: 26px; height: 26px; border-radius: 50%; background: #0f172a; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer;" title="\u0623\u0633\u0648\u062F"></button>
+          <input type="color" id="qr-custom-color-picker" value="#382d54" style="width: 28px; height: 28px; border: none; border-radius: 50%; cursor: pointer; padding: 0; background: transparent;" title="\u062A\u062E\u0635\u064A\u0635 \u0627\u0644\u0644\u0648\u0646" />
+        </div>
         <div style="background: #ffffff; padding: 16px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); display: flex; justify-content: center; align-items: center;">
           <canvas id="qr-modal-canvas"></canvas>
         </div>
@@ -2808,12 +2895,37 @@
       </div>
     `,
       confirmText: "\u0625\u063A\u0644\u0627\u0642",
-      cancelText: ""
+      cancelText: "",
+      onConfirm: () => true
     });
     setTimeout(() => {
+      let selectedColor = "#382d54";
       const canvas = document.getElementById("qr-modal-canvas");
-      if (canvas) {
-        generateQRCodeCanvas(url, canvas, 220);
+      const updateQr = () => {
+        if (canvas) {
+          generateQRCodeCanvas(url, canvas, 240, {
+            color: selectedColor,
+            bgColor: "#ffffff",
+            showLogo: true,
+            logoUrl: "./logo.svg"
+          });
+        }
+      };
+      updateQr();
+      document.querySelectorAll(".qr-color-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          selectedColor = e.currentTarget.getAttribute("data-color") || "#382d54";
+          document.querySelectorAll(".qr-color-btn").forEach((b) => b.style.boxShadow = "0 1px 3px rgba(0,0,0,0.2)");
+          e.currentTarget.style.boxShadow = `0 0 0 2px ${selectedColor}`;
+          updateQr();
+        });
+      });
+      const colorPicker = document.getElementById("qr-custom-color-picker");
+      if (colorPicker) {
+        colorPicker.addEventListener("input", (e) => {
+          selectedColor = e.target.value;
+          updateQr();
+        });
       }
       const downloadBtn = document.getElementById("btn-download-qr");
       if (downloadBtn && canvas) {

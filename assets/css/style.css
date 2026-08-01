@@ -208,9 +208,8 @@ body {
   font-size: 0.95rem;
   color: var(--color-text-secondary);
   max-width: 440px;
-  line-height: 1.6;
-  margin-top: 4px;
-  white-space: pre-line;
+  line-height: 1.5;
+  margin-top: 2px;
 }
 
 .website-pill-btn {

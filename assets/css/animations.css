@@ -40,6 +40,28 @@
   }
 }
 
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes scale-down {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.92); }
+}
+
+.modal-closing {
+  animation: fade-out 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+.modal-closing .modal-card {
+  animation: scale-down 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+.toast-hiding {
+  animation: fade-out 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
 .animate-fade-in {
   animation: fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

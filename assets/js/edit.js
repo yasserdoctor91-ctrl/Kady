@@ -140,7 +140,7 @@ function updateImagePreviewElements() {
 
   const avatarImg = document.getElementById('avatar-preview-img');
   if (avatarImg) {
-    avatarImg.src = settings.profile.avatar || 'assets/images/el doctor logo-01.png';
+    avatarImg.src = settings.profile.avatar || './logo.svg';
   }
 
   const logoPathInput = document.getElementById('logo-url-path');
@@ -206,10 +206,10 @@ function bindFormChangeEvents() {
   const removeAvatarBtn = document.getElementById('btn-remove-avatar');
   if (removeAvatarBtn) {
     removeAvatarBtn.addEventListener('click', () => {
-      settings.profile.avatar = 'assets/images/el doctor logo-01.png';
+      settings.profile.avatar = './logo.svg';
       updateImagePreviewElements();
       updateLivePreview();
-      showToast('تمت استعادة صورة الدكتور الافتراضية PNG', 'info');
+      showToast('تمت استعادة صورة اللوجو الافتراضية SVG', 'info');
     });
   }
 
