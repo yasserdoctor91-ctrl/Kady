@@ -1,0 +1,6 @@
+{
+  "name": "Link Page Website",
+  "description": "Modern, elegant static link-in-bio website with customization editor, live preview, themes, and QR generator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

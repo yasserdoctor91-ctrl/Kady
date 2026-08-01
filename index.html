@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO Meta Tags -->
+  <title>Kady | متجر بيع مستحضرات تجميل واكسسوارات</title>
+  <meta name="description" content="متجر بيع مستحضرات تجميل واكسسوارات - متجر بيع بالتجزئة والجملة" />
+  <meta name="keywords" content="Kady, مستحضرات تجميل, اكسسوارات, بيع بالتجزئة, بيع بالجملة, كادي" />
+  <meta name="author" content="Kady" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Kady | متجر بيع مستحضرات تجميل واكسسوارات" />
+  <meta property="og:description" content="متجر بيع مستحضرات تجميل واكسسوارات - متجر بيع بالتجزئة والجملة" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kady | متجر بيع مستحضرات تجميل واكسسوارات" />
+  <meta name="twitter:description" content="متجر بيع مستحضرات تجميل واكسسوارات - متجر بيع بالتجزئة والجملة" />
+
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234f46e5'><circle cx='12' cy='12' r='10'/></svg>" />
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Modular CSS Stylesheets -->
+  <link rel="stylesheet" href="./assets/css/variables.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/components.css" />
+  <link rel="stylesheet" href="./assets/css/animations.css" />
+  <link rel="stylesheet" href="./assets/css/responsive.css" />
+</head>
+<body>
+  
+  <div class="page-wrapper">
+    <!-- Top Action Header -->
+    <header class="public-header-bar">
+      <button id="btn-theme-toggle" class="header-action-btn" title="Toggle Light/Dark Theme">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
+        <span>Theme</span>
+      </button>
+
+      <a href="edit.html" class="header-action-btn" title="Open Customization Editor">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        <span>Customize</span>
+      </a>
+    </header>
+
+    <!-- Public Link Card Container -->
+    <main class="link-page-container">
+      <div id="public-profile-card" class="glass-card animate-fade-in">
+        <!-- Skeleton loading placeholder -->
+        <div class="profile-hero" style="gap: 16px;">
+          <div class="skeleton" style="width: 110px; height: 110px; border-radius: 50%;"></div>
+          <div class="skeleton" style="width: 200px; height: 28px; border-radius: 8px;"></div>
+          <div class="skeleton" style="width: 300px; height: 18px; border-radius: 6px;"></div>
+        </div>
+        <div class="links-list" style="margin-top: 24px; gap: 12px;">
+          <div class="skeleton" style="width: 100%; height: 54px; border-radius: 16px;"></div>
+          <div class="skeleton" style="width: 100%; height: 54px; border-radius: 16px;"></div>
+          <div class="skeleton" style="width: 100%; height: 54px; border-radius: 16px;"></div>
+        </div>
+      </div>
+
+      <!-- Footer Action Toolbar -->
+      <div class="public-toolbar">
+        <button id="btn-copy-link" class="toolbar-btn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span>Copy Link</span>
+        </button>
+
+        <button id="btn-share-page" class="toolbar-btn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          <span>Share</span>
+        </button>
+
+        <button id="btn-qr-code" class="toolbar-btn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <span>QR Code</span>
+        </button>
+      </div>
+
+      <!-- Footer Branding -->
+      <footer class="page-footer">
+        <p>Created with <a href="edit.html" class="footer-brand-link">Link Page Builder</a></p>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Bundled JS Entry Point (Supports both web server & local file:// protocol) -->
+  <script src="./assets/js/app.bundle.js"></script>
+</body>
+</html>

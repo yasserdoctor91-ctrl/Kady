@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kady | لوحة التحكم وتخصيص الروابط</title>
+  
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234f46e5'><circle cx='12' cy='12' r='10'/></svg>" />
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Modular CSS Stylesheets -->
+  <link rel="stylesheet" href="./assets/css/variables.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/components.css" />
+  <link rel="stylesheet" href="./assets/css/animations.css" />
+  <link rel="stylesheet" href="./assets/css/edit.css" />
+  <link rel="stylesheet" href="./assets/css/responsive.css" />
+</head>
+<body class="edit-app-layout">
+
+  <!-- Top Editor Navigation Bar -->
+  <nav class="edit-navbar">
+    <a href="index.html" class="edit-nav-brand">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      <span>Back to Website</span>
+    </a>
+
+    <div class="edit-nav-actions">
+      <button id="btn-export-settings" class="btn btn-secondary btn-sm" title="Export configuration to JSON file">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>Export</span>
+      </button>
+
+      <label class="btn btn-secondary btn-sm" style="cursor: pointer;" title="Import configuration from JSON file">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <span>Import</span>
+        <input type="file" id="import-file-input" accept=".json" style="display: none;" />
+      </label>
+
+      <button id="btn-reset-settings" class="btn btn-danger btn-sm" title="Reset all settings to default">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        <span>Reset</span>
+      </button>
+
+      <button id="btn-save-settings" class="btn btn-primary btn-sm">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Save Changes</span>
+      </button>
+
+      <button id="btn-logout-editor" class="btn btn-secondary btn-sm" title="Log out from editor">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        <span>Logout</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Split Screen Container -->
+  <div class="edit-split-container">
+    
+    <!-- Left Panel: Form Settings -->
+    <main class="edit-form-panel">
+      
+      <!-- Section 1: Brand Info -->
+      <section class="edit-section-card">
+        <h2 class="section-card-title">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+          Brand Identity
+        </h2>
+
+        <div class="form-group">
+          <label class="form-label" for="brand-name">Brand / Full Name</label>
+          <input type="text" id="brand-name" class="form-input" placeholder="e.g. Alex Rivera" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="brand-description">Description / Bio</label>
+          <textarea id="brand-description" class="form-textarea" placeholder="Short intro or professional title..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="brand-website">Main Website URL</label>
+          <input type="url" id="brand-website" class="form-input" placeholder="https://yourwebsite.com" />
+        </div>
+      </section>
+
+      <!-- Section 2: Profile Badges & Status -->
+      <section class="edit-section-card">
+        <h2 class="section-card-title">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          Profile Badges & Status (شارة الحالة والتوثيق)
+        </h2>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md);">
+          <div class="form-group">
+            <label class="form-label" for="profile-badge">شارة الحالة (Status Pill Badge)</label>
+            <input type="text" id="profile-badge" class="form-input" placeholder="e.g. نشط" />
+          </div>
+
+          <div class="form-group" style="justify-content: flex-end;">
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; padding-bottom: 10px;">
+              <input type="checkbox" id="profile-verified" style="width: 18px; height: 18px; accent-color: var(--color-primary);" />
+              <span class="form-label" style="margin: 0;">إظهار شارة التوثيق (Verified Badge)</span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Theme & Styling Presets -->
+      <section class="edit-section-card">
+        <h2 class="section-card-title">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg>
+          Theme & Colors
+        </h2>
+
+        <div class="form-group">
+          <label class="form-label">Theme Presets</label>
+          <select id="theme-preset" class="form-select">
+            <option value="clean-minimalism" selected>Clean Minimalism (Indigo & White)</option>
+            <option value="dark-luxury">Dark Luxury (Slate & Violet)</option>
+            <option value="minimal-glass">Minimalist Glassmorphism</option>
+            <option value="ocean-breeze">Ocean Breeze (Cyan & Deep Blue)</option>
+            <option value="sunset-glow">Sunset Glow (Rose & Orange)</option>
+            <option value="emerald-forest">Emerald Forest (Dark Emerald)</option>
+            <option value="clean-paper">Clean Paper (Light Aesthetic)</option>
+            <option value="custom">Custom Color Palette</option>
+          </select>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md);">
+          <div class="form-group">
+            <label class="form-label">Theme Mode</label>
+            <select id="theme-mode" class="form-select">
+              <option value="auto">Automatic (System Preference)</option>
+              <option value="dark">Dark Mode</option>
+              <option value="light">Light Mode</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Primary Color</label>
+            <input type="color" id="color-primary" class="form-input" style="height: 42px; padding: 4px; cursor: pointer;" />
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-md);">
+          <div class="form-group">
+            <label class="form-label">Background</label>
+            <input type="color" id="color-bg" class="form-input" style="height: 42px; padding: 4px; cursor: pointer;" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Text Color</label>
+            <input type="color" id="color-text" class="form-input" style="height: 42px; padding: 4px; cursor: pointer;" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Button Color</label>
+            <input type="color" id="color-btn-bg" class="form-input" style="height: 42px; padding: 4px; cursor: pointer;" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Typography -->
+      <section class="edit-section-card">
+        <h2 class="section-card-title">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+          Typography & Layout
+        </h2>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md);">
+          <div class="form-group">
+            <label class="form-label">Font Family</label>
+            <select id="typography-font" class="form-select">
+              <option value="Plus Jakarta Sans">Plus Jakarta Sans</option>
+              <option value="Inter">Inter</option>
+              <option value="Outfit">Outfit</option>
+              <option value="Playfair Display">Playfair Display (Serif)</option>
+              <option value="Space Grotesk">Space Grotesk</option>
+              <option value="Poppins">Poppins</option>
+              <option value="Montserrat">Montserrat</option>
+              <option value="JetBrains Mono">JetBrains Mono (Code)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Font Scale</label>
+            <select id="typography-size" class="form-select">
+              <option value="small">Compact (14px)</option>
+              <option value="medium" selected>Standard (16px)</option>
+              <option value="large">Spacious (18px)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+            <input type="checkbox" id="typography-rtl" style="width: 18px; height: 18px; accent-color: var(--color-primary);" />
+            <span class="form-label" style="margin: 0;">Enable Right-to-Left (RTL) Layout</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Section 5: Links Management -->
+      <section class="edit-section-card">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <h2 class="section-card-title" style="border-bottom: none; padding-bottom: 0;">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            Links & Social Media
+          </h2>
+
+          <button id="btn-add-link" class="btn btn-primary btn-sm">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span>Add Link</span>
+          </button>
+        </div>
+
+        <!-- Editable Links List Container -->
+        <div id="editable-links-list" style="display: flex; flex-direction: column; gap: var(--space-sm);">
+          <!-- Rendered dynamically by edit.js -->
+        </div>
+      </section>
+
+      <!-- Section 6: SEO Settings -->
+      <section class="edit-section-card">
+        <h2 class="section-card-title">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          SEO & Social Sharing Tags
+        </h2>
+
+        <div class="form-group">
+          <label class="form-label" for="seo-title">Meta Title Tag</label>
+          <input type="text" id="seo-title" class="form-input" placeholder="e.g. Alex Rivera | Senior Designer" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="seo-description">Meta Description</label>
+          <textarea id="seo-description" class="form-textarea" placeholder="Brief summary displayed on search engines & social cards..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="seo-keywords">Keywords (Comma separated)</label>
+          <input type="text" id="seo-keywords" class="form-input" placeholder="portfolio, design, links, developer" />
+        </div>
+      </section>
+
+      <!-- Section 7: Admin Authentication Settings -->
+      <section class="edit-section-card">
+        <h2 class="section-card-title">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Editor Security Credentials (حماية لوحة التعديل)
+        </h2>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md);">
+          <div class="form-group">
+            <label class="form-label" for="auth-username">Username (اسم المستخدم)</label>
+            <input type="text" id="auth-username" class="form-input" placeholder="admin" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="auth-password">Password (كلمة السر)</label>
+            <input type="password" id="auth-password" class="form-input" placeholder="admin123" />
+          </div>
+        </div>
+        <p style="font-size: 0.78rem; color: var(--color-text-muted); margin-top: 6px; line-height: 1.4;">
+          🔒 هذه البيانات تحمي صفحة التعديل. يمكنك تغيير اسم المستخدم وكلمة السر هنا ثم حفظ التغييرات.
+        </p>
+      </section>
+
+      <!-- Bottom Save Action Card -->
+      <section class="edit-section-card" style="background: linear-gradient(135deg, rgba(79,70,229,0.06), rgba(99,102,241,0.03)); border: 1.5px solid var(--color-primary); text-align: center; padding: 24px;">
+        <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--color-text); margin-bottom: 8px;">
+          💾 حفظ جميع التعديلات / Save All Changes
+        </h3>
+        <p style="font-size: 0.88rem; color: var(--color-text-secondary); margin-bottom: 16px;">
+          يتم حفظ أي تعديل تجريه تلقائياً، ولكن يمكنك الضغط هنا للتأكد من حفظ وتطبيق كافة التعديلات على الموقع بشكل فوري.
+        </p>
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <button id="btn-save-settings-bottom" class="btn btn-primary btn-lg" style="min-width: 200px; height: 48px; font-weight: 700; font-size: 1rem; gap: 8px;">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>حفظ التعديلات الآن</span>
+          </button>
+          <a href="index.html" class="btn btn-secondary btn-lg" style="height: 48px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center;">
+            <span>المعاينة في الموقع &larr;</span>
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Right Panel: Sticky Device Preview -->
+    <aside class="edit-preview-panel">
+      <div class="preview-header">
+        <span class="preview-title">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          Live Device Preview
+        </span>
+        <button id="btn-view-public" class="btn btn-secondary btn-sm" title="Open live public page in new tab">
+          View Website &nearr;
+        </button>
+      </div>
+
+      <!-- Simulated Smartphone Frame -->
+      <div class="device-frame">
+        <div class="device-notch"></div>
+        <div id="device-preview-content" class="device-inner-content">
+          <!-- Rendered live by preview.js -->
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Login Lock Screen Overlay Modal -->
+  <div id="login-modal-overlay" class="login-overlay">
+    <div class="login-card animate-scale-up">
+      <div class="login-header">
+        <div class="login-icon-badge">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h1 class="login-title">تسجيل الدخول لصفحة التعديل</h1>
+        <p class="login-subtitle">أدخل اسم المستخدم وكلمة السر للوصول إلى لوحة التحكم والتعديل</p>
+      </div>
+
+      <form id="editor-login-form" class="login-form">
+        <div id="login-error-alert" class="login-error-alert" style="display: none;"></div>
+
+        <div class="form-group">
+          <label class="form-label" for="login-username-input">اسم المستخدم (Username)</label>
+          <input type="text" id="login-username-input" class="form-input" placeholder="admin" required autocomplete="username" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="login-password-input">كلمة السر (Password)</label>
+          <input type="password" id="login-password-input" class="form-input" placeholder="••••••••" required autocomplete="current-password" />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top: 12px; height: 46px; font-weight: 600; font-size: 1rem; width: 100%;">
+          تسجيل الدخول / Login
+        </button>
+      </form>
+
+      <div class="login-footer-hint">
+        <div class="login-hint-badge">
+          <span>البيانات الافتراضية:</span>
+          <strong>admin</strong> / <strong>admin123</strong>
+        </div>
+        <a href="index.html" class="login-back-link">
+          &rarr; العودة للموقع الرئيسي (Back to Website)
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bundled JS Entry Point (Supports both web server & local file:// protocol) -->
+  <script src="./assets/js/edit.bundle.js"></script>
+</body>
+</html>
