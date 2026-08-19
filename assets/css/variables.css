@@ -13,37 +13,37 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  /* Clean Minimalism Theme Colors (Default Light) */
-  --color-primary: #4f46e5;
-  --color-primary-hover: #4338ca;
-  --color-secondary: #6366f1;
-  --color-accent: #818cf8;
+  /* Kady Brand Visual Identity Theme Colors (#FFFC8C, #70FFD2, #FFCC4D) */
+  --color-primary: #70FFD2;
+  --color-primary-hover: #4deeb7;
+  --color-secondary: #FFCC4D;
+  --color-accent: #FFFC8C;
   
-  --color-bg: #f8fafc;
-  --color-bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --color-bg: #fffef2;
+  --color-bg-gradient: linear-gradient(135deg, #fffef2 0%, #edfff8 35%, #fffde0 70%, #e6fff6 100%);
   --color-surface: #ffffff;
-  --color-surface-hover: #f1f5f9;
+  --color-surface-hover: #f4fdf8;
   
   --color-text: #0f172a;
-  --color-text-secondary: #64748b;
-  --color-text-muted: #94a3b8;
-  --color-border: rgba(226, 232, 240, 0.9);
-  --color-border-focus: rgba(79, 70, 229, 0.5);
+  --color-text-secondary: #334155;
+  --color-text-muted: #64748b;
+  --color-border: rgba(112, 255, 210, 0.45);
+  --color-border-focus: rgba(112, 255, 210, 0.8);
 
   /* Button Variables */
   --btn-bg: #ffffff;
   --btn-text: #0f172a;
-  --btn-border: #e2e8f0;
-  --btn-hover: #f8fafc;
-  --btn-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  --btn-border: rgba(112, 255, 210, 0.4);
+  --btn-hover: #fffde6;
+  --btn-shadow: 0 4px 14px rgba(112, 255, 210, 0.15);
   --btn-radius: 16px;
 
   /* Card & Glassmorphism */
-  --card-bg: rgba(255, 255, 255, 0.85);
-  --card-border: rgba(226, 232, 240, 0.8);
+  --card-bg: rgba(255, 255, 255, 0.92);
+  --card-border: rgba(112, 255, 210, 0.45);
   --card-blur: 16px;
   --card-radius: 24px;
-  --card-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07);
+  --card-shadow: 0 20px 45px -12px rgba(16, 185, 129, 0.15), 0 10px 25px -8px rgba(255, 204, 77, 0.12);
 
   /* UI Status Colors */
   --color-success: #10b981;
@@ -114,20 +114,20 @@
 
 /* Preset Themes */
 [data-theme-preset="clean-minimalism"] {
-  --color-primary: #4f46e5;
-  --color-secondary: #6366f1;
-  --color-bg: #f8fafc;
-  --color-bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --color-primary: #70FFD2;
+  --color-secondary: #FFCC4D;
+  --color-bg: #fffef2;
+  --color-bg-gradient: linear-gradient(135deg, #fffef2 0%, #edfff8 35%, #fffde0 70%, #e6fff6 100%);
   --color-surface: #ffffff;
   --color-text: #0f172a;
-  --color-text-secondary: #64748b;
+  --color-text-secondary: #334155;
   --btn-bg: #ffffff;
   --btn-text: #0f172a;
-  --btn-border: #e2e8f0;
-  --btn-hover: #f8fafc;
-  --card-bg: #ffffff;
-  --card-border: #e2e8f0;
-  --card-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.06);
+  --btn-border: rgba(112, 255, 210, 0.4);
+  --btn-hover: #fffde6;
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --card-border: rgba(112, 255, 210, 0.45);
+  --card-shadow: 0 20px 45px -12px rgba(16, 185, 129, 0.15), 0 10px 25px -8px rgba(255, 204, 77, 0.12);
 }
 
 [data-theme-preset="dark-luxury"] {

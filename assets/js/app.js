@@ -93,7 +93,7 @@ function bindToolbarActions() {
         try {
           await navigator.share({
             title: document.title,
-            text: 'تعرف على الصفحة الرسمية لـ Kady!',
+            text: 'تعرف على الصفحة الرسمية لـ Kady لمستحضرات التجميل!',
             url: currentUrl
           });
         } catch (err) {
@@ -127,9 +127,9 @@ function bindToolbarActions() {
 
 function fallbackShareModal(url) {
   showModal({
-    title: 'مشاركة الموقع',
+    title: 'مشاركة رابط Kady',
     content: `
-      <p style="margin-bottom: 12px; dir: rtl; text-align: right;">شارك الصفحة الرسمية مع أصدقائك أو عملائك:</p>
+      <p style="margin-bottom: 12px; dir: rtl; text-align: right;">شارك الصفحة الرسمية لـ Kady مع أصدقائك أو عملائك:</p>
       <div style="display: flex; gap: 8px;">
         <input type="text" readonly value="${url}" class="form-input" id="share-modal-input" />
         <button class="btn btn-primary" id="share-modal-copy-btn">${UI_ICONS.copy} نسخ</button>
@@ -154,20 +154,19 @@ function fallbackShareModal(url) {
 
 function openQrModal(url) {
   showModal({
-    title: 'رمز QR للموقع',
+    title: 'رمز QR لـ Kady',
     content: `
       <div style="display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 10px 0;">
-        <p style="text-align: center; font-size: 0.95rem; color: var(--color-text-secondary); dir: rtl;">امسح رمز QR باستخدام كاميرا هاتفك لفتح هذه الصفحة مباشرة.</p>
+        <p style="text-align: center; font-size: 0.95rem; color: var(--color-text-secondary); dir: rtl;">امسح رمز QR باستخدام كاميرا هاتفك لفتح صفحة Kady مباشرة.</p>
         <div style="display: flex; align-items: center; gap: 8px; margin-top: 2px;">
           <span style="font-size: 0.85rem; font-weight: 600; color: var(--color-text);">لون الـ QR:</span>
-          <button class="qr-color-btn" data-color="#382d54" style="width: 26px; height: 26px; border-radius: 50%; background: #382d54; border: 2px solid #ffffff; box-shadow: 0 0 0 2px #382d54; cursor: pointer;" title="أرجواني غامق"></button>
-          <button class="qr-color-btn" data-color="#4f46e5" style="width: 26px; height: 26px; border-radius: 50%; background: #4f46e5; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer;" title="أزرق ملكي"></button>
-          <button class="qr-color-btn" data-color="#d96b9d" style="width: 26px; height: 26px; border-radius: 50%; background: #d96b9d; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer;" title="وردي"></button>
-          <button class="qr-color-btn" data-color="#059669" style="width: 26px; height: 26px; border-radius: 50%; background: #059669; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer;" title="أخضر زمردي"></button>
-          <button class="qr-color-btn" data-color="#0f172a" style="width: 26px; height: 26px; border-radius: 50%; background: #0f172a; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer;" title="أسود"></button>
-          <input type="color" id="qr-custom-color-picker" value="#382d54" style="width: 28px; height: 28px; border: none; border-radius: 50%; cursor: pointer; padding: 0; background: transparent;" title="تخصيص اللون" />
+          <button class="qr-color-btn" data-color="#064e3b" style="width: 26px; height: 26px; border-radius: 50%; background: #064e3b; border: 2px solid #ffffff; box-shadow: 0 0 0 2px #064e3b; cursor: pointer;" title="أخضر زمردي داكن"></button>
+          <button class="qr-color-btn" data-color="#0d9488" style="width: 26px; height: 26px; border-radius: 50%; background: #0d9488; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer;" title="تيل"></button>
+          <button class="qr-color-btn" data-color="#d97706" style="width: 26px; height: 26px; border-radius: 50%; background: #d97706; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer;" title="ذهبي دافئ"></button>
+          <button class="qr-color-btn" data-color="#0f172a" style="width: 26px; height: 26px; border-radius: 50%; background: #0f172a; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer;" title="أسود أنيق"></button>
+          <input type="color" id="qr-custom-color-picker" value="#064e3b" style="width: 28px; height: 28px; border: none; border-radius: 50%; cursor: pointer; padding: 0; background: transparent;" title="تخصيص اللون" />
         </div>
-        <div style="background: #ffffff; padding: 16px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); display: flex; justify-content: center; align-items: center;">
+        <div style="background: #ffffff; padding: 16px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); display: flex; justify-content: center; align-items: center; border: 2px solid #70FFD2;">
           <canvas id="qr-modal-canvas"></canvas>
         </div>
         <button class="btn btn-secondary btn-sm" id="btn-download-qr" style="gap: 8px;">
@@ -181,7 +180,7 @@ function openQrModal(url) {
   });
 
   setTimeout(() => {
-    let selectedColor = '#382d54';
+    let selectedColor = '#064e3b';
     const canvas = document.getElementById('qr-modal-canvas');
     const updateQr = () => {
       if (canvas) {
@@ -197,7 +196,7 @@ function openQrModal(url) {
 
     document.querySelectorAll('.qr-color-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
-        selectedColor = e.currentTarget.getAttribute('data-color') || '#382d54';
+        selectedColor = e.currentTarget.getAttribute('data-color') || '#064e3b';
         document.querySelectorAll('.qr-color-btn').forEach(b => b.style.boxShadow = '0 1px 3px rgba(0,0,0,0.2)');
         e.currentTarget.style.boxShadow = `0 0 0 2px ${selectedColor}`;
         updateQr();
@@ -216,7 +215,7 @@ function openQrModal(url) {
     if (downloadBtn && canvas) {
       downloadBtn.addEventListener('click', () => {
         const link = document.createElement('a');
-        link.download = 'eldoctor-qr-code.png';
+        link.download = 'kady-cosmetics-qr-code.png';
         link.href = canvas.toDataURL('image/png');
         link.click();
         showToast('تم تحميل صورة رمز QR بنجاح!', 'success');

@@ -1,6 +1,6 @@
 {
   "name": "Link Page Website",
-  "description": "Modern, elegant static link-in-bio website with customization editor, live preview, themes, and QR generator.",
+  "description": "صفحة الروابط الرسمية لـ Kady لمستحضرات التجميل مع الهوية البصرية، رمز QR تفاعلي، ومؤثرات حركية مائية.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

@@ -26,8 +26,8 @@ export function renderPreview(settings, containerElement) {
     logoSrc = './logo.svg';
   }
 
-  // Filter enabled links
-  const activeLinks = (links || []).filter(l => l.enabled);
+  // Filter enabled links (excluding any Website links)
+  const activeLinks = (links || []).filter(l => l.enabled && l.platform !== 'Website' && !(l.url && l.url.includes('doctor.drugza.net')));
 
   // Generate links HTML
   let linksHtml = '';
@@ -35,7 +35,7 @@ export function renderPreview(settings, containerElement) {
     linksHtml = `
       <div class="empty-state">
         <div class="empty-state-icon">${UI_ICONS.sparkler}</div>
-        <p>No active links available yet. Add links in the editor!</p>
+        <p>لا توجد روابط متاحة حالياً.</p>
       </div>
     `;
   } else {
@@ -43,18 +43,12 @@ export function renderPreview(settings, containerElement) {
       const isFeatured = link.featured;
       let platformIcon = getPlatformIcon(link.platform);
 
-      // Add logo image for Website link card if available
-      if (link.platform === 'Website' && (logoSrc || avatarSrc)) {
-        const logoImg = logoSrc || avatarSrc;
-        platformIcon = `<img src="${escapeHtml(logoImg)}" alt="Website Logo" class="website-link-icon-img" style="width: 26px; height: 26px; object-fit: contain; border-radius: 6px; background: #ffffff; padding: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);" onerror="this.onerror=null; this.outerHTML='${escapeHtml(getPlatformIcon('Website'))}';" />`;
-      }
-
+      const isTelOrMailto = link.url && (link.url.startsWith('tel:') || link.url.startsWith('mailto:'));
       const staggerClass = `stagger-${(idx % 7) + 1}`;
 
       return `
         <a href="${escapeHtml(link.url)}" 
-           target="_blank" 
-           rel="noopener noreferrer" 
+           ${isTelOrMailto ? '' : 'target="_blank" rel="noopener noreferrer"'} 
            class="link-card ${isFeatured ? 'link-card-featured' : ''} has-ripple animate-slide-up ${staggerClass}"
            data-link-id="${link.id}">
           <div class="link-card-icon">
@@ -64,7 +58,7 @@ export function renderPreview(settings, containerElement) {
             <span class="link-card-label">${escapeHtml(link.label || link.platform)}</span>
             ${link.badge ? `<span class="link-card-badge">${escapeHtml(link.badge)}</span>` : ''}
           </div>
-          <span class="link-card-arrow">${UI_ICONS.externalLink}</span>
+          <span class="link-card-arrow">${isTelOrMailto ? platformIcon : UI_ICONS.externalLink}</span>
         </a>
       `;
     }).join('');

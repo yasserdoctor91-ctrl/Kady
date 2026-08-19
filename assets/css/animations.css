@@ -80,12 +80,132 @@
 
 /* Stagger delay classes for links list */
 .stagger-1 { animation-delay: 0.05s; }
-.stagger-2 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.10s; }
 .stagger-3 { animation-delay: 0.15s; }
-.stagger-4 { animation-delay: 0.2s; }
+.stagger-4 { animation-delay: 0.20s; }
 .stagger-5 { animation-delay: 0.25s; }
-.stagger-6 { animation-delay: 0.3s; }
+.stagger-6 { animation-delay: 0.30s; }
 .stagger-7 { animation-delay: 0.35s; }
+
+/* Keyframe Animations for Visual Effects */
+@keyframes orbFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -30px) scale(1.15); }
+}
+
+@keyframes orbFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-35px, 25px) scale(1.2); }
+}
+
+@keyframes orbFloat3 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+  50% { transform: translate(25px, 35px) scale(0.85); opacity: 0.7; }
+}
+
+@keyframes avatarAura {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(112, 255, 210, 0.45), 0 0 40px rgba(255, 204, 77, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(112, 255, 210, 0.7), 0 0 65px rgba(255, 252, 140, 0.5);
+  }
+}
+
+/* Water Flow & Liquid Ripple Animations for Buttons */
+@keyframes liquidWaterFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fluidWaveMotion {
+  0% {
+    transform: translateX(-100%) translateY(0) rotate(15deg);
+  }
+  50% {
+    transform: translateX(100%) translateY(-10px) rotate(15deg);
+  }
+  100% {
+    transform: translateX(-100%) translateY(0) rotate(15deg);
+  }
+}
+
+@keyframes waterGleam {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.05); filter: brightness(1.2); box-shadow: 0 0 12px currentColor; }
+}
+
+@keyframes shimmerSweep {
+  0% { transform: translateX(-100%) rotate(25deg); }
+  100% { transform: translateX(250%) rotate(25deg); }
+}
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* Ambient Background Orbs */
+.ambient-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(85px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+  transition: all 0.5s ease;
+}
+
+.ambient-orb-1 {
+  top: -100px;
+  right: -80px;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(112, 255, 210, 0.45) 0%, rgba(255, 252, 140, 0.35) 60%, transparent 100%);
+  animation: orbFloat1 12s ease-in-out infinite;
+}
+
+.ambient-orb-2 {
+  bottom: -100px;
+  left: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 204, 77, 0.4) 0%, rgba(112, 255, 210, 0.3) 60%, transparent 100%);
+  animation: orbFloat2 15s ease-in-out infinite;
+}
+
+.ambient-orb-3 {
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(255, 252, 140, 0.4) 0%, rgba(112, 255, 210, 0.25) 70%, transparent 100%);
+  animation: orbFloat3 18s ease-in-out infinite;
+}
+
+[data-theme="dark"] .ambient-orb {
+  opacity: 0.6;
+  filter: blur(90px);
+}
 
 /* Interactive Ripple Effect on Click */
 .has-ripple {

@@ -3,12 +3,12 @@
  * Manages LocalStorage persistence, defaults, export, and import.
  */
 
-const STORAGE_KEY = 'linkpage_settings_v16';
+const STORAGE_KEY = 'linkpage_settings_kady_v1';
 
 export const DEFAULT_SETTINGS = {
   brand: {
     name: 'Kady',
-    description: 'متجر بيع مستحضرات تجميل واكسسوارات\nمتجر بيع بالتجزئة والجملة',
+    description: 'Kady لمستحضرات التجميل',
     website: ''
   },
   logo: {
@@ -27,17 +27,17 @@ export const DEFAULT_SETTINGS = {
     glassBlur: '16px'
   },
   colors: {
-    primary: '#4f46e5',
-    secondary: '#6366f1',
-    background: '#f8fafc',
+    primary: '#70FFD2',
+    secondary: '#FFCC4D',
+    background: '#FFFC8C',
     surface: '#ffffff',
     text: '#0f172a',
-    textSecondary: '#64748b',
+    textSecondary: '#334155',
     buttonBg: '#ffffff',
     buttonText: '#0f172a',
-    buttonBorder: '#e2e8f0',
-    buttonHover: '#f8fafc',
-    accent: '#818cf8'
+    buttonBorder: '#70FFD2',
+    buttonHover: '#fefce8',
+    accent: '#FFCC4D'
   },
   typography: {
     fontFamily: 'Cairo',
@@ -52,49 +52,58 @@ export const DEFAULT_SETTINGS = {
   },
   links: [
     {
-      id: 'l1',
-      platform: 'Facebook',
-      label: 'صفحتنا على فيسبوك',
-      url: 'https://www.facebook.com/share/1BU8LP7iX8/',
+      id: 'l_map',
+      platform: 'Google Maps',
+      label: 'موقعنا على الخريطة',
+      url: 'https://maps.app.goo.gl/NY5xavsZAmNnnoyA8?g_st=aw',
+      enabled: true,
+      featured: true,
+      badge: 'الموقع'
+    },
+    {
+      id: 'l_wa',
+      platform: 'WhatsApp',
+      label: 'تواصل عبر واتساب (+201005019951)',
+      url: 'https://wa.me/201005019951',
       enabled: true,
       featured: true,
       badge: 'مميّز'
     },
     {
-      id: 'l2',
+      id: 'l_fb',
+      platform: 'Facebook',
+      label: 'صفحتنا على فيسبوك',
+      url: 'https://www.facebook.com/share/1BU8LP7iX8/',
+      enabled: true,
+      featured: false,
+      badge: ''
+    },
+    {
+      id: 'l_tiktok',
       platform: 'TikTok',
       label: 'حسابنا على تيك توك',
       url: 'https://www.tiktok.com/@user5079433482615?_r=1&_t=ZS-98WAJ3ILOaO',
       enabled: true,
-      featured: true,
+      featured: false,
       badge: ''
     },
     {
-      id: 'l3',
+      id: 'l_ig',
       platform: 'Instagram',
       label: 'حسابنا على إنستغرام',
       url: 'https://www.instagram.com/kdy.kady?igsh=cmM1dHBvaXp1ZGpv',
       enabled: true,
       featured: false,
       badge: ''
-    },
-    {
-      id: 'l4',
-      platform: 'WhatsApp',
-      label: 'تواصل عبر واتساب',
-      url: 'https://iwtsp.com/201005019951',
-      enabled: true,
-      featured: true,
-      badge: 'مباشر'
     }
   ],
   seo: {
-    metaTitle: 'Kady | متجر بيع مستحضرات تجميل واكسسوارات',
-    metaDescription: 'متجر بيع مستحضرات تجميل واكسسوارات - متجر بيع بالتجزئة والجملة - تواصل معنا عبر فيسبوك، تيك توك، إنستغرام، وواتساب.',
-    keywords: 'Kady, كادي, مستحضرات تجميل, اكسسوارات, تجزئة, جملة, تجميل'
+    metaTitle: 'Kady | لمستحضرات التجميل',
+    metaDescription: 'الصفحة الرسمية لـ Kady لمستحضرات التجميل - تواصل معنا عبر واتساب، فيسبوك، تيك توك، وإنستغرام.',
+    keywords: 'Kady, كادي, مستحضرات تجميل, تجميل, عناية بالبشرة, cosmetics, beauty'
   },
   qr: {
-    color: '#382d54',
+    color: '#0f766e',
     bgColor: '#ffffff',
     showLogo: true
   }
@@ -115,15 +124,72 @@ function mergeWithDefaults(parsed) {
     typography: { ...DEFAULT_SETTINGS.typography, ...(parsed.typography || {}) },
     seo: { ...DEFAULT_SETTINGS.seo, ...(parsed.seo || {}) },
     auth: { ...DEFAULT_SETTINGS.auth, ...(parsed.auth || {}) },
-    qr: { ...DEFAULT_SETTINGS.qr, ...(parsed.qr || {}) },
-    links: Array.isArray(parsed.links) ? parsed.links : DEFAULT_SETTINGS.links
+    qr: { ...DEFAULT_SETTINGS.qr, ...(parsed.qr || {}) }
   };
+  merged.brand.name = 'Kady';
+  merged.brand.description = 'Kady لمستحضرات التجميل';
+  merged.brand.website = '';
   if (!merged.logo.url || merged.logo.url.includes('eldoctor_logo') || merged.logo.url.includes('el doctor logo')) {
     merged.logo.url = './logo.svg';
   }
   if (!merged.profile.avatar || merged.profile.avatar.includes('eldoctor_logo') || merged.profile.avatar.includes('el doctor logo')) {
     merged.profile.avatar = './logo.svg';
   }
+
+  // Exact 5 links specification requested by the user:
+  // 1. Google Maps (العنوان او الموقع)
+  // 2. WhatsApp (+201005019951)
+  // 3. Facebook
+  // 4. TikTok
+  // 5. Instagram
+  merged.links = [
+    {
+      id: 'l_map',
+      platform: 'Google Maps',
+      label: 'موقعنا على الخريطة',
+      url: 'https://maps.app.goo.gl/NY5xavsZAmNnnoyA8?g_st=aw',
+      enabled: true,
+      featured: true,
+      badge: 'الموقع'
+    },
+    {
+      id: 'l_wa',
+      platform: 'WhatsApp',
+      label: 'تواصل عبر واتساب (+201005019951)',
+      url: 'https://wa.me/201005019951',
+      enabled: true,
+      featured: true,
+      badge: 'مميّز'
+    },
+    {
+      id: 'l_fb',
+      platform: 'Facebook',
+      label: 'صفحتنا على فيسبوك',
+      url: 'https://www.facebook.com/share/1BU8LP7iX8/',
+      enabled: true,
+      featured: false,
+      badge: ''
+    },
+    {
+      id: 'l_tiktok',
+      platform: 'TikTok',
+      label: 'حسابنا على تيك توك',
+      url: 'https://www.tiktok.com/@user5079433482615?_r=1&_t=ZS-98WAJ3ILOaO',
+      enabled: true,
+      featured: false,
+      badge: ''
+    },
+    {
+      id: 'l_ig',
+      platform: 'Instagram',
+      label: 'حسابنا على إنستغرام',
+      url: 'https://www.instagram.com/kdy.kady?igsh=cmM1dHBvaXp1ZGpv',
+      enabled: true,
+      featured: false,
+      badge: ''
+    }
+  ];
+
   return merged;
 }
 
