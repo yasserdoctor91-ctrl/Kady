@@ -13,37 +13,37 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  /* Kady Brand Visual Identity Theme Colors (#FFFC8C, #70FFD2, #FFCC4D) */
-  --color-primary: #70FFD2;
-  --color-primary-hover: #4deeb7;
-  --color-secondary: #FFCC4D;
-  --color-accent: #FFFC8C;
+  /* Kady Brand Visual Identity Theme Colors (#FFDADA) */
+  --color-primary: #FFDADA;
+  --color-primary-hover: #ffc4cb;
+  --color-secondary: #e11d48;
+  --color-accent: #fb7185;
   
-  --color-bg: #fffef2;
-  --color-bg-gradient: linear-gradient(135deg, #fffef2 0%, #edfff8 35%, #fffde0 70%, #e6fff6 100%);
+  --color-bg: #fffafa;
+  --color-bg-gradient: linear-gradient(135deg, #fffafa 0%, #FFDADA 40%, #fff0f3 75%, #ffe4e8 100%);
   --color-surface: #ffffff;
-  --color-surface-hover: #f4fdf8;
+  --color-surface-hover: #fff5f6;
   
-  --color-text: #0f172a;
-  --color-text-secondary: #334155;
-  --color-text-muted: #64748b;
-  --color-border: rgba(112, 255, 210, 0.45);
-  --color-border-focus: rgba(112, 255, 210, 0.8);
+  --color-text: #1f2937;
+  --color-text-secondary: #4b5563;
+  --color-text-muted: #9ca3af;
+  --color-border: rgba(255, 182, 193, 0.5);
+  --color-border-focus: rgba(225, 29, 72, 0.5);
 
   /* Button Variables */
   --btn-bg: #ffffff;
-  --btn-text: #0f172a;
-  --btn-border: rgba(112, 255, 210, 0.4);
-  --btn-hover: #fffde6;
-  --btn-shadow: 0 4px 14px rgba(112, 255, 210, 0.15);
+  --btn-text: #1f2937;
+  --btn-border: rgba(255, 182, 193, 0.6);
+  --btn-hover: #fff0f3;
+  --btn-shadow: 0 4px 14px rgba(255, 182, 193, 0.25);
   --btn-radius: 16px;
 
   /* Card & Glassmorphism */
-  --card-bg: rgba(255, 255, 255, 0.92);
-  --card-border: rgba(112, 255, 210, 0.45);
+  --card-bg: rgba(255, 255, 255, 0.94);
+  --card-border: rgba(255, 182, 193, 0.55);
   --card-blur: 16px;
   --card-radius: 24px;
-  --card-shadow: 0 20px 45px -12px rgba(16, 185, 129, 0.15), 0 10px 25px -8px rgba(255, 204, 77, 0.12);
+  --card-shadow: 0 20px 45px -12px rgba(225, 29, 72, 0.1), 0 10px 25px -8px rgba(255, 182, 193, 0.25);
 
   /* UI Status Colors */
   --color-success: #10b981;
@@ -114,20 +114,20 @@
 
 /* Preset Themes */
 [data-theme-preset="clean-minimalism"] {
-  --color-primary: #70FFD2;
-  --color-secondary: #FFCC4D;
-  --color-bg: #fffef2;
-  --color-bg-gradient: linear-gradient(135deg, #fffef2 0%, #edfff8 35%, #fffde0 70%, #e6fff6 100%);
+  --color-primary: #FFDADA;
+  --color-secondary: #e11d48;
+  --color-bg: #fffafa;
+  --color-bg-gradient: linear-gradient(135deg, #fffafa 0%, #FFDADA 40%, #fff0f3 75%, #ffe4e8 100%);
   --color-surface: #ffffff;
-  --color-text: #0f172a;
-  --color-text-secondary: #334155;
+  --color-text: #1f2937;
+  --color-text-secondary: #4b5563;
   --btn-bg: #ffffff;
-  --btn-text: #0f172a;
-  --btn-border: rgba(112, 255, 210, 0.4);
-  --btn-hover: #fffde6;
+  --btn-text: #1f2937;
+  --btn-border: rgba(255, 182, 193, 0.6);
+  --btn-hover: #fff0f3;
   --card-bg: rgba(255, 255, 255, 0.95);
-  --card-border: rgba(112, 255, 210, 0.45);
-  --card-shadow: 0 20px 45px -12px rgba(16, 185, 129, 0.15), 0 10px 25px -8px rgba(255, 204, 77, 0.12);
+  --card-border: rgba(255, 182, 193, 0.55);
+  --card-shadow: 0 20px 45px -12px rgba(225, 29, 72, 0.1), 0 10px 25px -8px rgba(255, 182, 193, 0.25);
 }
 
 [data-theme-preset="dark-luxury"] {

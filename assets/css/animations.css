@@ -105,10 +105,10 @@
 
 @keyframes avatarAura {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(112, 255, 210, 0.45), 0 0 40px rgba(255, 204, 77, 0.3);
+    box-shadow: 0 0 20px rgba(255, 218, 218, 0.7), 0 0 40px rgba(244, 114, 182, 0.4);
   }
   50% {
-    box-shadow: 0 0 35px rgba(112, 255, 210, 0.7), 0 0 65px rgba(255, 252, 140, 0.5);
+    box-shadow: 0 0 35px rgba(255, 218, 218, 0.95), 0 0 65px rgba(225, 29, 72, 0.35);
   }
 }
 
@@ -179,7 +179,7 @@
   right: -80px;
   width: 380px;
   height: 380px;
-  background: radial-gradient(circle, rgba(112, 255, 210, 0.45) 0%, rgba(255, 252, 140, 0.35) 60%, transparent 100%);
+  background: radial-gradient(circle, rgba(255, 218, 218, 0.7) 0%, rgba(251, 113, 133, 0.3) 60%, transparent 100%);
   animation: orbFloat1 12s ease-in-out infinite;
 }
 
@@ -188,7 +188,7 @@
   left: -80px;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(255, 204, 77, 0.4) 0%, rgba(112, 255, 210, 0.3) 60%, transparent 100%);
+  background: radial-gradient(circle, rgba(255, 218, 218, 0.65) 0%, rgba(244, 114, 182, 0.3) 60%, transparent 100%);
   animation: orbFloat2 15s ease-in-out infinite;
 }
 
@@ -198,7 +198,7 @@
   transform: translate(-50%, -50%);
   width: 450px;
   height: 450px;
-  background: radial-gradient(circle, rgba(255, 252, 140, 0.4) 0%, rgba(112, 255, 210, 0.25) 70%, transparent 100%);
+  background: radial-gradient(circle, rgba(255, 218, 218, 0.6) 0%, rgba(253, 164, 175, 0.25) 70%, transparent 100%);
   animation: orbFloat3 18s ease-in-out infinite;
 }
 

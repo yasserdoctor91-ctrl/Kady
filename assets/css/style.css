@@ -145,15 +145,15 @@ body {
   object-fit: contain;
   background: #ffffff;
   padding: 12px;
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12), 0 0 20px rgba(79, 70, 229, 0.2);
+  border: 2px solid rgba(255, 218, 218, 0.8);
+  box-shadow: 0 12px 30px rgba(225, 29, 72, 0.08), 0 0 24px rgba(255, 218, 218, 0.8);
   animation: avatarAura 5s ease-in-out infinite;
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
 }
 
 .profile-avatar:hover {
   transform: translateY(-4px) scale(1.04);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18), 0 0 30px rgba(79, 70, 229, 0.4);
+  box-shadow: 0 18px 40px rgba(225, 29, 72, 0.12), 0 0 35px rgba(255, 218, 218, 1);
 }
 
 .brand-logo-badge {
@@ -276,7 +276,7 @@ body {
   width: 100%;
 }
 
-/* Link Cards Visual Effects - Water Wave Fluid Animation & Kady Brand Colors (#FFFC8C, #70FFD2, #FFCC4D) */
+/* Link Cards Visual Effects - Water Wave Fluid Animation & Crystal Clear Styling (NO BLUR / NO HAZE) */
 .link-card {
   position: relative;
   display: flex;
@@ -284,131 +284,125 @@ body {
   gap: var(--space-md);
   padding: 16px 20px;
   border-radius: var(--btn-radius);
-  /* Liquid animated moving gradient background blending brand colors */
+  /* Liquid animated moving gradient background blending #FFDADA rose shades with 100% crisp clarity */
   background: linear-gradient(
     125deg,
     #ffffff 0%,
-    #fffdf0 20%,
-    #e8fff7 40%,
-    #fff9db 60%,
-    #c4ffeb 80%,
-    #fff1bd 100%
+    #fff5f6 20%,
+    #FFDADA 45%,
+    #fff0f3 70%,
+    #ffccd5 90%,
+    #ffffff 100%
   );
   background-size: 280% 280%;
-  animation: liquidWaterFlow 8s ease-in-out infinite alternate;
-  border: 1.5px solid rgba(112, 255, 210, 0.45);
-  color: #0f172a;
+  animation: liquidWaterFlow 7s ease-in-out infinite alternate;
+  border: 1.5px solid #FFDADA;
+  color: #111827;
   text-decoration: none;
-  font-weight: var(--font-weight-semibold);
-  font-size: 0.95rem;
-  box-shadow: 0 6px 20px -4px rgba(112, 255, 210, 0.15), 0 2px 6px rgba(0, 0, 0, 0.04);
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  font-weight: var(--font-weight-bold);
+  font-size: 0.96rem;
+  box-shadow: 0 4px 16px -2px rgba(225, 29, 72, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
   overflow: hidden;
-  backdrop-filter: blur(10px);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
-/* Continuous liquid surface wave ripple sheen */
+/* Crisp Water Shimmer Highlight without any blur */
 .link-card::before {
   content: '';
   position: absolute;
-  top: -60%;
-  left: -120%;
-  width: 75%;
-  height: 220%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255, 255, 255, 0.8) 0%,
-    rgba(255, 255, 255, 0.35) 45%,
-    transparent 70%
-  );
-  transform: rotate(20deg);
-  animation: fluidWaveMotion 7s ease-in-out infinite;
-  pointer-events: none;
-}
-
-.link-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
+  top: 0;
+  left: -150%;
+  width: 80%;
+  height: 100%;
   background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.4) 0%,
-    rgba(255, 255, 255, 0) 50%,
-    rgba(112, 255, 210, 0.15) 100%
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 100%
   );
+  transform: skewX(-25deg);
+  animation: shimmerSweep 6s infinite;
   pointer-events: none;
-  border-radius: inherit;
 }
 
 .link-card:hover {
-  border-color: #70FFD2;
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 16px 32px -6px rgba(112, 255, 210, 0.35), 0 0 20px rgba(255, 204, 77, 0.25);
-  animation-duration: 4s; /* Speed up water flow animation on hover */
+  border-color: #f43f5e;
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: 0 12px 28px -4px rgba(244, 63, 94, 0.22), 0 0 18px rgba(255, 218, 218, 0.6);
+  animation-duration: 3.5s;
 }
 
 .link-card:active {
-  transform: translateY(-1px) scale(0.98);
+  transform: translateY(-1px) scale(0.99);
 }
 
-/* Featured Links - Deep Liquid Water Wave Gradient with Kady Mint & Warm Gold */
-.link-card-featured {
-  background: linear-gradient(
-    125deg,
-    #064e3b 0%,
-    #0d9488 25%,
-    #10b981 50%,
-    #d97706 75%,
-    #047857 100%
-  );
-  background-size: 300% 300%;
-  animation: liquidWaterFlow 6s ease-in-out infinite alternate;
-  border-color: rgba(255, 255, 255, 0.5);
-  color: #ffffff;
-  box-shadow: 0 10px 28px -4px rgba(6, 78, 59, 0.35), 0 0 18px rgba(112, 255, 210, 0.3);
+/* Individual Platform Styling for Maximum Crisp Clarity */
+.link-card.platform-whatsapp {
+  border-color: rgba(37, 211, 102, 0.4);
+}
+.link-card.platform-whatsapp:hover {
+  border-color: #25d366;
+  box-shadow: 0 12px 28px -4px rgba(37, 211, 102, 0.3), 0 0 18px rgba(255, 218, 218, 0.6);
 }
 
-.link-card-featured:hover {
-  border-color: #ffffff;
-  box-shadow: 0 18px 38px -5px rgba(6, 78, 59, 0.5), 0 0 30px rgba(112, 255, 210, 0.45);
-  animation-duration: 3s;
+.link-card.platform-google-maps {
+  border-color: rgba(234, 67, 53, 0.4);
+}
+.link-card.platform-google-maps:hover {
+  border-color: #ea4335;
+  box-shadow: 0 12px 28px -4px rgba(234, 67, 53, 0.28), 0 0 18px rgba(255, 218, 218, 0.6);
+}
+
+.link-card.platform-facebook {
+  border-color: rgba(24, 119, 242, 0.4);
+}
+.link-card.platform-facebook:hover {
+  border-color: #1877f2;
+  box-shadow: 0 12px 28px -4px rgba(24, 119, 242, 0.28), 0 0 18px rgba(255, 218, 218, 0.6);
+}
+
+.link-card.platform-tiktok {
+  border-color: rgba(0, 0, 0, 0.25);
+}
+.link-card.platform-tiktok:hover {
+  border-color: #111827;
+  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.25), 0 0 18px rgba(255, 218, 218, 0.6);
+}
+
+.link-card.platform-instagram {
+  border-color: rgba(225, 48, 108, 0.4);
+}
+.link-card.platform-instagram:hover {
+  border-color: #e1306c;
+  box-shadow: 0 12px 28px -4px rgba(225, 48, 108, 0.3), 0 0 18px rgba(255, 218, 218, 0.6);
 }
 
 .link-card-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.85);
+  background: #ffffff;
   flex-shrink: 0;
-  color: #0d9488;
-  box-shadow: 0 2px 8px rgba(112, 255, 210, 0.25);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease, color 0.3s ease;
+  border: 1px solid rgba(255, 182, 193, 0.45);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease, box-shadow 0.3s ease;
   z-index: 1;
 }
 
 .link-card:hover .link-card-icon {
-  transform: scale(1.18) rotate(-4deg);
+  transform: scale(1.15) rotate(-3deg);
   background: #ffffff;
-  color: #059669;
-}
-
-.link-card-featured .link-card-icon {
-  background: rgba(255, 255, 255, 0.25);
-  color: #ffffff;
-  backdrop-filter: blur(4px);
-}
-
-.link-card-featured:hover .link-card-icon {
-  background: rgba(255, 255, 255, 0.4);
-  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 [data-theme="dark"] .link-card-icon {
-  background: rgba(255, 255, 255, 0.1);
-  color: currentColor;
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .link-card-content {
@@ -424,7 +418,9 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 0.98rem;
+  font-weight: 600;
   letter-spacing: -0.01em;
+  color: #111827;
 }
 
 .link-card-badge {
@@ -434,10 +430,9 @@ body {
   font-size: 0.68rem;
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.04em;
-  background: rgba(255, 255, 255, 0.25);
+  background: #e11d48;
   color: #ffffff;
   margin-top: 3px;
-  backdrop-filter: blur(4px);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   animation: badgePulse 3s ease-in-out infinite;
 }

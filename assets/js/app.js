@@ -160,13 +160,13 @@ function openQrModal(url) {
         <p style="text-align: center; font-size: 0.95rem; color: var(--color-text-secondary); dir: rtl;">امسح رمز QR باستخدام كاميرا هاتفك لفتح صفحة Kady مباشرة.</p>
         <div style="display: flex; align-items: center; gap: 8px; margin-top: 2px;">
           <span style="font-size: 0.85rem; font-weight: 600; color: var(--color-text);">لون الـ QR:</span>
-          <button class="qr-color-btn" data-color="#064e3b" style="width: 26px; height: 26px; border-radius: 50%; background: #064e3b; border: 2px solid #ffffff; box-shadow: 0 0 0 2px #064e3b; cursor: pointer;" title="أخضر زمردي داكن"></button>
-          <button class="qr-color-btn" data-color="#0d9488" style="width: 26px; height: 26px; border-radius: 50%; background: #0d9488; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer;" title="تيل"></button>
-          <button class="qr-color-btn" data-color="#d97706" style="width: 26px; height: 26px; border-radius: 50%; background: #d97706; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer;" title="ذهبي دافئ"></button>
-          <button class="qr-color-btn" data-color="#0f172a" style="width: 26px; height: 26px; border-radius: 50%; background: #0f172a; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer;" title="أسود أنيق"></button>
-          <input type="color" id="qr-custom-color-picker" value="#064e3b" style="width: 28px; height: 28px; border: none; border-radius: 50%; cursor: pointer; padding: 0; background: transparent;" title="تخصيص اللون" />
+          <button class="qr-color-btn" data-color="#881337" style="width: 26px; height: 26px; border-radius: 50%; background: #881337; border: 2px solid #ffffff; box-shadow: 0 0 0 2px #881337; cursor: pointer;" title="عنابي فاخر"></button>
+          <button class="qr-color-btn" data-color="#e11d48" style="width: 26px; height: 26px; border-radius: 50%; background: #e11d48; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer;" title="وردي كلاسيكي"></button>
+          <button class="qr-color-btn" data-color="#db2777" style="width: 26px; height: 26px; border-radius: 50%; background: #db2777; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer;" title="فوشيا أنيق"></button>
+          <button class="qr-color-btn" data-color="#1f2937" style="width: 26px; height: 26px; border-radius: 50%; background: #1f2937; border: 2px solid #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); cursor: pointer;" title="أسود أنيق"></button>
+          <input type="color" id="qr-custom-color-picker" value="#881337" style="width: 28px; height: 28px; border: none; border-radius: 50%; cursor: pointer; padding: 0; background: transparent;" title="تخصيص اللون" />
         </div>
-        <div style="background: #ffffff; padding: 16px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); display: flex; justify-content: center; align-items: center; border: 2px solid #70FFD2;">
+        <div style="background: #ffffff; padding: 16px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); display: flex; justify-content: center; align-items: center; border: 2px solid #FFDADA;">
           <canvas id="qr-modal-canvas"></canvas>
         </div>
         <button class="btn btn-secondary btn-sm" id="btn-download-qr" style="gap: 8px;">
@@ -180,7 +180,7 @@ function openQrModal(url) {
   });
 
   setTimeout(() => {
-    let selectedColor = '#064e3b';
+    let selectedColor = '#881337';
     const canvas = document.getElementById('qr-modal-canvas');
     const updateQr = () => {
       if (canvas) {
@@ -196,7 +196,7 @@ function openQrModal(url) {
 
     document.querySelectorAll('.qr-color-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
-        selectedColor = e.currentTarget.getAttribute('data-color') || '#064e3b';
+        selectedColor = e.currentTarget.getAttribute('data-color') || '#881337';
         document.querySelectorAll('.qr-color-btn').forEach(b => b.style.boxShadow = '0 1px 3px rgba(0,0,0,0.2)');
         e.currentTarget.style.boxShadow = `0 0 0 2px ${selectedColor}`;
         updateQr();

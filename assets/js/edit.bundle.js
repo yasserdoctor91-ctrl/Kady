@@ -2104,7 +2104,7 @@
   });
 
   // assets/js/storage.js
-  var STORAGE_KEY = "linkpage_settings_kady_v1";
+  var STORAGE_KEY = "linkpage_settings_kady_v3";
   var DEFAULT_SETTINGS = {
     brand: {
       name: "Kady",
@@ -2125,26 +2125,26 @@
       mode: "light",
       // 'light', 'dark', 'custom', 'auto'
       preset: "clean-minimalism",
-      glassmorphism: true,
-      glassBlur: "16px"
+      glassmorphism: false,
+      glassBlur: "0px"
     },
     colors: {
-      primary: "#70FFD2",
-      secondary: "#FFCC4D",
-      background: "#FFFC8C",
+      primary: "#FFDADA",
+      secondary: "#f472b6",
+      background: "#FFDADA",
       surface: "#ffffff",
-      text: "#0f172a",
-      textSecondary: "#334155",
+      text: "#111827",
+      textSecondary: "#374151",
       buttonBg: "#ffffff",
-      buttonText: "#0f172a",
-      buttonBorder: "#70FFD2",
-      buttonHover: "#fefce8",
-      accent: "#FFCC4D"
+      buttonText: "#111827",
+      buttonBorder: "#FFDADA",
+      buttonHover: "#fff0f3",
+      accent: "#e11d48"
     },
     typography: {
       fontFamily: "Cairo",
       fontSize: "medium",
-      fontWeight: "500",
+      fontWeight: "600",
       rtl: true
     },
     auth: {
@@ -2153,24 +2153,6 @@
       enabled: true
     },
     links: [
-      {
-        id: "l_map",
-        platform: "Google Maps",
-        label: "\u0645\u0648\u0642\u0639\u0646\u0627 \u0639\u0644\u0649 \u0627\u0644\u062E\u0631\u064A\u0637\u0629",
-        url: "https://maps.app.goo.gl/NY5xavsZAmNnnoyA8?g_st=aw",
-        enabled: true,
-        featured: true,
-        badge: "\u0627\u0644\u0645\u0648\u0642\u0639"
-      },
-      {
-        id: "l_wa",
-        platform: "WhatsApp",
-        label: "\u062A\u0648\u0627\u0635\u0644 \u0639\u0628\u0631 \u0648\u0627\u062A\u0633\u0627\u0628 (+201005019951)",
-        url: "https://wa.me/201005019951",
-        enabled: true,
-        featured: true,
-        badge: "\u0645\u0645\u064A\u0651\u0632"
-      },
       {
         id: "l_fb",
         platform: "Facebook",
@@ -2197,15 +2179,33 @@
         enabled: true,
         featured: false,
         badge: ""
+      },
+      {
+        id: "l_wa",
+        platform: "WhatsApp",
+        label: "\u062A\u0648\u0627\u0635\u0644 \u0639\u0628\u0631 \u0648\u0627\u062A\u0633\u0627\u0628 (+201005019951)",
+        url: "https://wa.me/201005019951",
+        enabled: true,
+        featured: false,
+        badge: ""
+      },
+      {
+        id: "l_map",
+        platform: "Google Maps",
+        label: "\u0645\u0648\u0642\u0639\u0646\u0627 \u0639\u0644\u0649 \u0627\u0644\u062E\u0631\u064A\u0637\u0629",
+        url: "https://maps.app.goo.gl/NY5xavsZAmNnnoyA8?g_st=aw",
+        enabled: true,
+        featured: false,
+        badge: ""
       }
     ],
     seo: {
       metaTitle: "Kady | \u0644\u0645\u0633\u062A\u062D\u0636\u0631\u0627\u062A \u0627\u0644\u062A\u062C\u0645\u064A\u0644",
-      metaDescription: "\u0627\u0644\u0635\u0641\u062D\u0629 \u0627\u0644\u0631\u0633\u0645\u064A\u0629 \u0644\u0640 Kady \u0644\u0645\u0633\u062A\u062D\u0636\u0631\u0627\u062A \u0627\u0644\u062A\u062C\u0645\u064A\u0644 - \u062A\u0648\u0627\u0635\u0644 \u0645\u0639\u0646\u0627 \u0639\u0628\u0631 \u0648\u0627\u062A\u0633\u0627\u0628\u060C \u0641\u064A\u0633\u0628\u0648\u0643\u060C \u062A\u064A\u0643 \u062A\u0648\u0643\u060C \u0648\u0625\u0646\u0633\u062A\u063A\u0631\u0627\u0645.",
+      metaDescription: "\u0627\u0644\u0635\u0641\u062D\u0629 \u0627\u0644\u0631\u0633\u0645\u064A\u0629 \u0644\u0640 Kady \u0644\u0645\u0633\u062A\u062D\u0636\u0631\u0627\u062A \u0627\u0644\u062A\u062C\u0645\u064A\u0644 - \u062A\u0648\u0627\u0635\u0644 \u0645\u0639\u0646\u0627 \u0639\u0628\u0631 \u0641\u064A\u0633\u0628\u0648\u0643\u060C \u062A\u064A\u0643 \u062A\u0648\u0643\u060C \u0625\u0646\u0633\u062A\u063A\u0631\u0627\u0645\u060C \u0648\u0627\u062A\u0633\u0627\u0628\u060C \u0648\u0645\u0648\u0642\u0639\u0646\u0627.",
       keywords: "Kady, \u0643\u0627\u062F\u064A, \u0645\u0633\u062A\u062D\u0636\u0631\u0627\u062A \u062A\u062C\u0645\u064A\u0644, \u062A\u062C\u0645\u064A\u0644, \u0639\u0646\u0627\u064A\u0629 \u0628\u0627\u0644\u0628\u0634\u0631\u0629, cosmetics, beauty"
     },
     qr: {
-      color: "#0f766e",
+      color: "#881337",
       bgColor: "#ffffff",
       showLogo: true
     }
@@ -2237,24 +2237,6 @@
     }
     merged.links = [
       {
-        id: "l_map",
-        platform: "Google Maps",
-        label: "\u0645\u0648\u0642\u0639\u0646\u0627 \u0639\u0644\u0649 \u0627\u0644\u062E\u0631\u064A\u0637\u0629",
-        url: "https://maps.app.goo.gl/NY5xavsZAmNnnoyA8?g_st=aw",
-        enabled: true,
-        featured: true,
-        badge: "\u0627\u0644\u0645\u0648\u0642\u0639"
-      },
-      {
-        id: "l_wa",
-        platform: "WhatsApp",
-        label: "\u062A\u0648\u0627\u0635\u0644 \u0639\u0628\u0631 \u0648\u0627\u062A\u0633\u0627\u0628 (+201005019951)",
-        url: "https://wa.me/201005019951",
-        enabled: true,
-        featured: true,
-        badge: "\u0645\u0645\u064A\u0651\u0632"
-      },
-      {
         id: "l_fb",
         platform: "Facebook",
         label: "\u0635\u0641\u062D\u062A\u0646\u0627 \u0639\u0644\u0649 \u0641\u064A\u0633\u0628\u0648\u0643",
@@ -2277,6 +2259,24 @@
         platform: "Instagram",
         label: "\u062D\u0633\u0627\u0628\u0646\u0627 \u0639\u0644\u0649 \u0625\u0646\u0633\u062A\u063A\u0631\u0627\u0645",
         url: "https://www.instagram.com/kdy.kady?igsh=cmM1dHBvaXp1ZGpv",
+        enabled: true,
+        featured: false,
+        badge: ""
+      },
+      {
+        id: "l_wa",
+        platform: "WhatsApp",
+        label: "\u062A\u0648\u0627\u0635\u0644 \u0639\u0628\u0631 \u0648\u0627\u062A\u0633\u0627\u0628 (+201005019951)",
+        url: "https://wa.me/201005019951",
+        enabled: true,
+        featured: false,
+        badge: ""
+      },
+      {
+        id: "l_map",
+        platform: "Google Maps",
+        label: "\u0645\u0648\u0642\u0639\u0646\u0627 \u0639\u0644\u0649 \u0627\u0644\u062E\u0631\u064A\u0637\u0629",
+        url: "https://maps.app.goo.gl/NY5xavsZAmNnnoyA8?g_st=aw",
         enabled: true,
         featured: false,
         badge: ""
@@ -2776,21 +2776,24 @@
       linksHtml = activeLinks.map((link, idx) => {
         const isFeatured = link.featured;
         let platformIcon = getPlatformIcon(link.platform);
+        const platConfig = SOCIAL_PLATFORMS[link.platform] || SOCIAL_PLATFORMS["Custom Link"];
+        const platColor = platConfig.color || "#e11d48";
         const isTelOrMailto = link.url && (link.url.startsWith("tel:") || link.url.startsWith("mailto:"));
         const staggerClass = `stagger-${idx % 7 + 1}`;
         return `
         <a href="${escapeHtml(link.url)}" 
            ${isTelOrMailto ? "" : 'target="_blank" rel="noopener noreferrer"'} 
-           class="link-card ${isFeatured ? "link-card-featured" : ""} has-ripple animate-slide-up ${staggerClass}"
-           data-link-id="${link.id}">
-          <div class="link-card-icon">
+           class="link-card ${isFeatured ? "link-card-featured" : ""} platform-${escapeHtml(link.platform.toLowerCase().replace(/\s+/g, "-"))} has-ripple animate-slide-up ${staggerClass}"
+           data-link-id="${link.id}"
+           data-platform="${escapeHtml(link.platform)}">
+          <div class="link-card-icon" style="color: ${platColor};">
             ${platformIcon}
           </div>
           <div class="link-card-content">
             <span class="link-card-label">${escapeHtml(link.label || link.platform)}</span>
             ${link.badge ? `<span class="link-card-badge">${escapeHtml(link.badge)}</span>` : ""}
           </div>
-          <span class="link-card-arrow">${isTelOrMailto ? platformIcon : UI_ICONS.externalLink}</span>
+          <span class="link-card-arrow" style="color: ${platColor};">${isTelOrMailto ? platformIcon : UI_ICONS.externalLink}</span>
         </a>
       `;
       }).join("");

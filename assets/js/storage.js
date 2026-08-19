@@ -3,7 +3,7 @@
  * Manages LocalStorage persistence, defaults, export, and import.
  */
 
-const STORAGE_KEY = 'linkpage_settings_kady_v1';
+const STORAGE_KEY = 'linkpage_settings_kady_v3';
 
 export const DEFAULT_SETTINGS = {
   brand: {
@@ -23,26 +23,26 @@ export const DEFAULT_SETTINGS = {
   theme: {
     mode: 'light', // 'light', 'dark', 'custom', 'auto'
     preset: 'clean-minimalism',
-    glassmorphism: true,
-    glassBlur: '16px'
+    glassmorphism: false,
+    glassBlur: '0px'
   },
   colors: {
-    primary: '#70FFD2',
-    secondary: '#FFCC4D',
-    background: '#FFFC8C',
+    primary: '#FFDADA',
+    secondary: '#f472b6',
+    background: '#FFDADA',
     surface: '#ffffff',
-    text: '#0f172a',
-    textSecondary: '#334155',
+    text: '#111827',
+    textSecondary: '#374151',
     buttonBg: '#ffffff',
-    buttonText: '#0f172a',
-    buttonBorder: '#70FFD2',
-    buttonHover: '#fefce8',
-    accent: '#FFCC4D'
+    buttonText: '#111827',
+    buttonBorder: '#FFDADA',
+    buttonHover: '#fff0f3',
+    accent: '#e11d48'
   },
   typography: {
     fontFamily: 'Cairo',
     fontSize: 'medium',
-    fontWeight: '500',
+    fontWeight: '600',
     rtl: true
   },
   auth: {
@@ -51,24 +51,6 @@ export const DEFAULT_SETTINGS = {
     enabled: true
   },
   links: [
-    {
-      id: 'l_map',
-      platform: 'Google Maps',
-      label: 'موقعنا على الخريطة',
-      url: 'https://maps.app.goo.gl/NY5xavsZAmNnnoyA8?g_st=aw',
-      enabled: true,
-      featured: true,
-      badge: 'الموقع'
-    },
-    {
-      id: 'l_wa',
-      platform: 'WhatsApp',
-      label: 'تواصل عبر واتساب (+201005019951)',
-      url: 'https://wa.me/201005019951',
-      enabled: true,
-      featured: true,
-      badge: 'مميّز'
-    },
     {
       id: 'l_fb',
       platform: 'Facebook',
@@ -95,15 +77,33 @@ export const DEFAULT_SETTINGS = {
       enabled: true,
       featured: false,
       badge: ''
+    },
+    {
+      id: 'l_wa',
+      platform: 'WhatsApp',
+      label: 'تواصل عبر واتساب (+201005019951)',
+      url: 'https://wa.me/201005019951',
+      enabled: true,
+      featured: false,
+      badge: ''
+    },
+    {
+      id: 'l_map',
+      platform: 'Google Maps',
+      label: 'موقعنا على الخريطة',
+      url: 'https://maps.app.goo.gl/NY5xavsZAmNnnoyA8?g_st=aw',
+      enabled: true,
+      featured: false,
+      badge: ''
     }
   ],
   seo: {
     metaTitle: 'Kady | لمستحضرات التجميل',
-    metaDescription: 'الصفحة الرسمية لـ Kady لمستحضرات التجميل - تواصل معنا عبر واتساب، فيسبوك، تيك توك، وإنستغرام.',
+    metaDescription: 'الصفحة الرسمية لـ Kady لمستحضرات التجميل - تواصل معنا عبر فيسبوك، تيك توك، إنستغرام، واتساب، وموقعنا.',
     keywords: 'Kady, كادي, مستحضرات تجميل, تجميل, عناية بالبشرة, cosmetics, beauty'
   },
   qr: {
-    color: '#0f766e',
+    color: '#881337',
     bgColor: '#ffffff',
     showLogo: true
   }
@@ -136,31 +136,13 @@ function mergeWithDefaults(parsed) {
     merged.profile.avatar = './logo.svg';
   }
 
-  // Exact 5 links specification requested by the user:
-  // 1. Google Maps (العنوان او الموقع)
-  // 2. WhatsApp (+201005019951)
-  // 3. Facebook
-  // 4. TikTok
-  // 5. Instagram
+  // Exact 5 links specification & order requested by the user without blur/featured haze:
+  // 1. Facebook
+  // 2. TikTok
+  // 3. Instagram
+  // 4. WhatsApp (+201005019951)
+  // 5. Google Maps (الموقع او العنوان)
   merged.links = [
-    {
-      id: 'l_map',
-      platform: 'Google Maps',
-      label: 'موقعنا على الخريطة',
-      url: 'https://maps.app.goo.gl/NY5xavsZAmNnnoyA8?g_st=aw',
-      enabled: true,
-      featured: true,
-      badge: 'الموقع'
-    },
-    {
-      id: 'l_wa',
-      platform: 'WhatsApp',
-      label: 'تواصل عبر واتساب (+201005019951)',
-      url: 'https://wa.me/201005019951',
-      enabled: true,
-      featured: true,
-      badge: 'مميّز'
-    },
     {
       id: 'l_fb',
       platform: 'Facebook',
@@ -184,6 +166,24 @@ function mergeWithDefaults(parsed) {
       platform: 'Instagram',
       label: 'حسابنا على إنستغرام',
       url: 'https://www.instagram.com/kdy.kady?igsh=cmM1dHBvaXp1ZGpv',
+      enabled: true,
+      featured: false,
+      badge: ''
+    },
+    {
+      id: 'l_wa',
+      platform: 'WhatsApp',
+      label: 'تواصل عبر واتساب (+201005019951)',
+      url: 'https://wa.me/201005019951',
+      enabled: true,
+      featured: false,
+      badge: ''
+    },
+    {
+      id: 'l_map',
+      platform: 'Google Maps',
+      label: 'موقعنا على الخريطة',
+      url: 'https://maps.app.goo.gl/NY5xavsZAmNnnoyA8?g_st=aw',
       enabled: true,
       featured: false,
       badge: ''
