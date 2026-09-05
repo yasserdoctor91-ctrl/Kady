@@ -42,8 +42,6 @@ export function renderPreview(settings, containerElement) {
     linksHtml = activeLinks.map((link, idx) => {
       const isFeatured = link.featured;
       let platformIcon = getPlatformIcon(link.platform);
-      const platConfig = SOCIAL_PLATFORMS[link.platform] || SOCIAL_PLATFORMS['Custom Link'];
-      const platColor = platConfig.color || '#e11d48';
 
       const isTelOrMailto = link.url && (link.url.startsWith('tel:') || link.url.startsWith('mailto:'));
       const staggerClass = `stagger-${(idx % 7) + 1}`;
@@ -51,17 +49,16 @@ export function renderPreview(settings, containerElement) {
       return `
         <a href="${escapeHtml(link.url)}" 
            ${isTelOrMailto ? '' : 'target="_blank" rel="noopener noreferrer"'} 
-           class="link-card ${isFeatured ? 'link-card-featured' : ''} platform-${escapeHtml(link.platform.toLowerCase().replace(/\s+/g, '-'))} has-ripple animate-slide-up ${staggerClass}"
-           data-link-id="${link.id}"
-           data-platform="${escapeHtml(link.platform)}">
-          <div class="link-card-icon" style="color: ${platColor};">
+           class="link-card ${isFeatured ? 'link-card-featured' : ''} has-ripple animate-slide-up ${staggerClass}"
+           data-link-id="${link.id}">
+          <div class="link-card-icon">
             ${platformIcon}
           </div>
           <div class="link-card-content">
             <span class="link-card-label">${escapeHtml(link.label || link.platform)}</span>
             ${link.badge ? `<span class="link-card-badge">${escapeHtml(link.badge)}</span>` : ''}
           </div>
-          <span class="link-card-arrow" style="color: ${platColor};">${isTelOrMailto ? platformIcon : UI_ICONS.externalLink}</span>
+          <span class="link-card-arrow">${isTelOrMailto ? platformIcon : UI_ICONS.externalLink}</span>
         </a>
       `;
     }).join('');

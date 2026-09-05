@@ -2105,6 +2105,7 @@
 
   // assets/js/storage.js
   var STORAGE_KEY = "linkpage_settings_kady_v3";
+  var LEGACY_STORAGE_KEYS = ["linkpage_settings_kady_v2", "linkpage_settings_kady_v1", "linkpage_settings"];
   var DEFAULT_SETTINGS = {
     brand: {
       name: "Kady",
@@ -2125,18 +2126,18 @@
       mode: "light",
       // 'light', 'dark', 'custom', 'auto'
       preset: "clean-minimalism",
-      glassmorphism: false,
-      glassBlur: "0px"
+      glassmorphism: true,
+      glassBlur: "16px"
     },
     colors: {
       primary: "#FFDADA",
       secondary: "#f472b6",
       background: "#FFDADA",
       surface: "#ffffff",
-      text: "#111827",
-      textSecondary: "#374151",
+      text: "#1f2937",
+      textSecondary: "#4b5563",
       buttonBg: "#ffffff",
-      buttonText: "#111827",
+      buttonText: "#1f2937",
       buttonBorder: "#FFDADA",
       buttonHover: "#fff0f3",
       accent: "#e11d48"
@@ -2144,7 +2145,7 @@
     typography: {
       fontFamily: "Cairo",
       fontSize: "medium",
-      fontWeight: "600",
+      fontWeight: "500",
       rtl: true
     },
     auth: {
@@ -2186,17 +2187,17 @@
         label: "\u062A\u0648\u0627\u0635\u0644 \u0639\u0628\u0631 \u0648\u0627\u062A\u0633\u0627\u0628 (+201005019951)",
         url: "https://wa.me/201005019951",
         enabled: true,
-        featured: false,
-        badge: ""
+        featured: true,
+        badge: "\u0645\u0645\u064A\u0651\u0632"
       },
       {
         id: "l_map",
         platform: "Google Maps",
         label: "\u0645\u0648\u0642\u0639\u0646\u0627 \u0639\u0644\u0649 \u0627\u0644\u062E\u0631\u064A\u0637\u0629",
-        url: "https://maps.app.goo.gl/NY5xavsZAmNnnoyA8?g_st=aw",
+        url: "https://maps.app.goo.gl/c4mdKVMu5gmt5iyJ7?g_st=aw",
         enabled: true,
-        featured: false,
-        badge: ""
+        featured: true,
+        badge: "\u0627\u0644\u0645\u0648\u0642\u0639"
       }
     ],
     seo: {
@@ -2269,25 +2270,39 @@
         label: "\u062A\u0648\u0627\u0635\u0644 \u0639\u0628\u0631 \u0648\u0627\u062A\u0633\u0627\u0628 (+201005019951)",
         url: "https://wa.me/201005019951",
         enabled: true,
-        featured: false,
-        badge: ""
+        featured: true,
+        badge: "\u0645\u0645\u064A\u0651\u0632"
       },
       {
         id: "l_map",
         platform: "Google Maps",
         label: "\u0645\u0648\u0642\u0639\u0646\u0627 \u0639\u0644\u0649 \u0627\u0644\u062E\u0631\u064A\u0637\u0629",
-        url: "https://maps.app.goo.gl/NY5xavsZAmNnnoyA8?g_st=aw",
+        url: "https://maps.app.goo.gl/c4mdKVMu5gmt5iyJ7?g_st=aw",
         enabled: true,
-        featured: false,
-        badge: ""
+        featured: true,
+        badge: "\u0627\u0644\u0645\u0648\u0642\u0639"
       }
     ];
+    if (Array.isArray(parsed.links)) {
+      merged.links = merged.links.map((link) => {
+        if (link.url && link.url.includes("NY5xavsZAmNnnoyA8")) {
+          return { ...link, url: "https://maps.app.goo.gl/c4mdKVMu5gmt5iyJ7?g_st=aw" };
+        }
+        return link;
+      });
+    }
     return merged;
   }
   function loadSettings() {
     let loadedRaw = null;
     try {
-      const data = localStorage.getItem(STORAGE_KEY);
+      let data = localStorage.getItem(STORAGE_KEY);
+      if (!data) {
+        for (const key of LEGACY_STORAGE_KEYS) {
+          data = localStorage.getItem(key);
+          if (data) break;
+        }
+      }
       if (data) loadedRaw = data;
     } catch (e) {
       console.warn("LocalStorage read restricted:", e);
@@ -2681,24 +2696,21 @@
       linksHtml = activeLinks.map((link, idx) => {
         const isFeatured = link.featured;
         let platformIcon = getPlatformIcon(link.platform);
-        const platConfig = SOCIAL_PLATFORMS[link.platform] || SOCIAL_PLATFORMS["Custom Link"];
-        const platColor = platConfig.color || "#e11d48";
         const isTelOrMailto = link.url && (link.url.startsWith("tel:") || link.url.startsWith("mailto:"));
         const staggerClass = `stagger-${idx % 7 + 1}`;
         return `
         <a href="${escapeHtml(link.url)}" 
            ${isTelOrMailto ? "" : 'target="_blank" rel="noopener noreferrer"'} 
-           class="link-card ${isFeatured ? "link-card-featured" : ""} platform-${escapeHtml(link.platform.toLowerCase().replace(/\s+/g, "-"))} has-ripple animate-slide-up ${staggerClass}"
-           data-link-id="${link.id}"
-           data-platform="${escapeHtml(link.platform)}">
-          <div class="link-card-icon" style="color: ${platColor};">
+           class="link-card ${isFeatured ? "link-card-featured" : ""} has-ripple animate-slide-up ${staggerClass}"
+           data-link-id="${link.id}">
+          <div class="link-card-icon">
             ${platformIcon}
           </div>
           <div class="link-card-content">
             <span class="link-card-label">${escapeHtml(link.label || link.platform)}</span>
             ${link.badge ? `<span class="link-card-badge">${escapeHtml(link.badge)}</span>` : ""}
           </div>
-          <span class="link-card-arrow" style="color: ${platColor};">${isTelOrMailto ? platformIcon : UI_ICONS.externalLink}</span>
+          <span class="link-card-arrow">${isTelOrMailto ? platformIcon : UI_ICONS.externalLink}</span>
         </a>
       `;
       }).join("");

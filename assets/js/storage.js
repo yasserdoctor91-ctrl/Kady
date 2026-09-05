@@ -4,6 +4,7 @@
  */
 
 const STORAGE_KEY = 'linkpage_settings_kady_v3';
+const LEGACY_STORAGE_KEYS = ['linkpage_settings_kady_v2', 'linkpage_settings_kady_v1', 'linkpage_settings'];
 
 export const DEFAULT_SETTINGS = {
   brand: {
@@ -23,18 +24,18 @@ export const DEFAULT_SETTINGS = {
   theme: {
     mode: 'light', // 'light', 'dark', 'custom', 'auto'
     preset: 'clean-minimalism',
-    glassmorphism: false,
-    glassBlur: '0px'
+    glassmorphism: true,
+    glassBlur: '16px'
   },
   colors: {
     primary: '#FFDADA',
     secondary: '#f472b6',
     background: '#FFDADA',
     surface: '#ffffff',
-    text: '#111827',
-    textSecondary: '#374151',
+    text: '#1f2937',
+    textSecondary: '#4b5563',
     buttonBg: '#ffffff',
-    buttonText: '#111827',
+    buttonText: '#1f2937',
     buttonBorder: '#FFDADA',
     buttonHover: '#fff0f3',
     accent: '#e11d48'
@@ -42,7 +43,7 @@ export const DEFAULT_SETTINGS = {
   typography: {
     fontFamily: 'Cairo',
     fontSize: 'medium',
-    fontWeight: '600',
+    fontWeight: '500',
     rtl: true
   },
   auth: {
@@ -84,17 +85,17 @@ export const DEFAULT_SETTINGS = {
       label: 'تواصل عبر واتساب (+201005019951)',
       url: 'https://wa.me/201005019951',
       enabled: true,
-      featured: false,
-      badge: ''
+      featured: true,
+      badge: 'مميّز'
     },
     {
       id: 'l_map',
       platform: 'Google Maps',
       label: 'موقعنا على الخريطة',
-      url: 'https://maps.app.goo.gl/NY5xavsZAmNnnoyA8?g_st=aw',
+      url: 'https://maps.app.goo.gl/c4mdKVMu5gmt5iyJ7?g_st=aw',
       enabled: true,
-      featured: false,
-      badge: ''
+      featured: true,
+      badge: 'الموقع'
     }
   ],
   seo: {
@@ -136,7 +137,7 @@ function mergeWithDefaults(parsed) {
     merged.profile.avatar = './logo.svg';
   }
 
-  // Exact 5 links specification & order requested by the user without blur/featured haze:
+  // Exact 5 links specification & order requested by the user:
   // 1. Facebook
   // 2. TikTok
   // 3. Instagram
@@ -176,19 +177,29 @@ function mergeWithDefaults(parsed) {
       label: 'تواصل عبر واتساب (+201005019951)',
       url: 'https://wa.me/201005019951',
       enabled: true,
-      featured: false,
-      badge: ''
+      featured: true,
+      badge: 'مميّز'
     },
     {
       id: 'l_map',
       platform: 'Google Maps',
       label: 'موقعنا على الخريطة',
-      url: 'https://maps.app.goo.gl/NY5xavsZAmNnnoyA8?g_st=aw',
+      url: 'https://maps.app.goo.gl/c4mdKVMu5gmt5iyJ7?g_st=aw',
       enabled: true,
-      featured: false,
-      badge: ''
+      featured: true,
+      badge: 'الموقع'
     }
   ];
+
+  // Also replace any old maps link if present in saved settings
+  if (Array.isArray(parsed.links)) {
+    merged.links = merged.links.map(link => {
+      if (link.url && link.url.includes('NY5xavsZAmNnnoyA8')) {
+        return { ...link, url: 'https://maps.app.goo.gl/c4mdKVMu5gmt5iyJ7?g_st=aw' };
+      }
+      return link;
+    });
+  }
 
   return merged;
 }
@@ -202,7 +213,13 @@ export function loadSettings() {
 
   // 1. Try LocalStorage
   try {
-    const data = localStorage.getItem(STORAGE_KEY);
+    let data = localStorage.getItem(STORAGE_KEY);
+    if (!data) {
+      for (const key of LEGACY_STORAGE_KEYS) {
+        data = localStorage.getItem(key);
+        if (data) break;
+      }
+    }
     if (data) loadedRaw = data;
   } catch (e) {
     console.warn('LocalStorage read restricted:', e);
