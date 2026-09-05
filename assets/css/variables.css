@@ -13,37 +13,37 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  /* Kady Brand Visual Identity Theme Colors (#FFDADA) */
-  --color-primary: #FFDADA;
-  --color-primary-hover: #ffc4cb;
-  --color-secondary: #e11d48;
-  --color-accent: #fb7185;
+  /* Kady Brand Visual Identity Theme Colors (#FFDADA Soft Rose Background) */
+  --color-primary: #e11d48;
+  --color-primary-hover: #be123c;
+  --color-secondary: #f472b6;
+  --color-accent: #e11d48;
   
-  --color-bg: #fffafa;
-  --color-bg-gradient: linear-gradient(135deg, #fffafa 0%, #FFDADA 40%, #fff0f3 75%, #ffe4e8 100%);
+  --color-bg: #FFDADA;
+  --color-bg-gradient: linear-gradient(135deg, #FFDADA 0%, #fff0f3 50%, #fcd6df 100%);
   --color-surface: #ffffff;
-  --color-surface-hover: #fff5f6;
+  --color-surface-hover: #fff0f3;
   
   --color-text: #1f2937;
   --color-text-secondary: #4b5563;
-  --color-text-muted: #9ca3af;
-  --color-border: rgba(255, 182, 193, 0.5);
-  --color-border-focus: rgba(225, 29, 72, 0.5);
+  --color-text-muted: #6b7280;
+  --color-border: #FFDADA;
+  --color-border-focus: #e11d48;
 
-  /* Button Variables */
+  /* Button Variables - Crisp, Elegant White with Soft Rose Borders */
   --btn-bg: #ffffff;
   --btn-text: #1f2937;
-  --btn-border: rgba(255, 182, 193, 0.6);
+  --btn-border: #FFDADA;
   --btn-hover: #fff0f3;
-  --btn-shadow: 0 4px 14px rgba(255, 182, 193, 0.25);
+  --btn-shadow: 0 4px 14px rgba(225, 29, 72, 0.06), 0 0 12px rgba(255, 218, 218, 0.5);
   --btn-radius: 16px;
 
-  /* Card & Glassmorphism */
+  /* Card */
   --card-bg: rgba(255, 255, 255, 0.94);
-  --card-border: rgba(255, 182, 193, 0.55);
+  --card-border: rgba(255, 218, 218, 0.85);
   --card-blur: 16px;
   --card-radius: 24px;
-  --card-shadow: 0 20px 45px -12px rgba(225, 29, 72, 0.1), 0 10px 25px -8px rgba(255, 182, 193, 0.25);
+  --card-shadow: 0 20px 50px -10px rgba(184, 50, 106, 0.12), 0 0 35px rgba(255, 218, 218, 0.8);
 
   /* UI Status Colors */
   --color-success: #10b981;
@@ -65,28 +65,31 @@
   --transition-slow: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Light Theme Preset (Clean Minimalism) */
+/* Light Theme Preset (#FFDADA Soft Rose Background with Crisp Typography) */
 [data-theme="light"] {
-  --color-bg: #f8fafc;
-  --color-bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --color-primary: #e11d48;
+  --color-secondary: #f472b6;
+  --color-accent: #e11d48;
+  --color-bg: #FFDADA;
+  --color-bg-gradient: linear-gradient(135deg, #FFDADA 0%, #fff0f3 50%, #fcd6df 100%);
   --color-surface: #ffffff;
-  --color-surface-hover: #f1f5f9;
+  --color-surface-hover: #fff0f3;
   
-  --color-text: #0f172a;
-  --color-text-secondary: #64748b;
-  --color-text-muted: #94a3b8;
-  --color-border: #e2e8f0;
-  --color-border-focus: rgba(79, 70, 229, 0.5);
+  --color-text: #1f2937;
+  --color-text-secondary: #4b5563;
+  --color-text-muted: #6b7280;
+  --color-border: #FFDADA;
+  --color-border-focus: #e11d48;
 
   --btn-bg: #ffffff;
-  --btn-text: #0f172a;
-  --btn-border: #e2e8f0;
-  --btn-hover: #f8fafc;
-  --btn-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  --btn-text: #1f2937;
+  --btn-border: #FFDADA;
+  --btn-hover: #fff0f3;
+  --btn-shadow: 0 4px 14px rgba(225, 29, 72, 0.06), 0 0 12px rgba(255, 218, 218, 0.5);
 
-  --card-bg: rgba(255, 255, 255, 0.85);
-  --card-border: rgba(226, 232, 240, 0.8);
-  --card-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07);
+  --card-bg: rgba(255, 255, 255, 0.94);
+  --card-border: rgba(255, 218, 218, 0.85);
+  --card-shadow: 0 20px 50px -10px rgba(184, 50, 106, 0.12), 0 0 35px rgba(255, 218, 218, 0.8);
 }
 
 /* Dark Theme Preset */
@@ -114,20 +117,21 @@
 
 /* Preset Themes */
 [data-theme-preset="clean-minimalism"] {
-  --color-primary: #FFDADA;
-  --color-secondary: #e11d48;
-  --color-bg: #fffafa;
-  --color-bg-gradient: linear-gradient(135deg, #fffafa 0%, #FFDADA 40%, #fff0f3 75%, #ffe4e8 100%);
+  --color-primary: #e11d48;
+  --color-secondary: #f472b6;
+  --color-accent: #e11d48;
+  --color-bg: #FFDADA;
+  --color-bg-gradient: linear-gradient(135deg, #FFDADA 0%, #fff0f3 50%, #fcd6df 100%);
   --color-surface: #ffffff;
   --color-text: #1f2937;
   --color-text-secondary: #4b5563;
   --btn-bg: #ffffff;
   --btn-text: #1f2937;
-  --btn-border: rgba(255, 182, 193, 0.6);
+  --btn-border: #FFDADA;
   --btn-hover: #fff0f3;
-  --card-bg: rgba(255, 255, 255, 0.95);
-  --card-border: rgba(255, 182, 193, 0.55);
-  --card-shadow: 0 20px 45px -12px rgba(225, 29, 72, 0.1), 0 10px 25px -8px rgba(255, 182, 193, 0.25);
+  --card-bg: rgba(255, 255, 255, 0.94);
+  --card-border: rgba(255, 218, 218, 0.85);
+  --card-shadow: 0 20px 50px -10px rgba(184, 50, 106, 0.12), 0 0 35px rgba(255, 218, 218, 0.8);
 }
 
 [data-theme-preset="dark-luxury"] {

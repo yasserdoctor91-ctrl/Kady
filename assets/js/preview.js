@@ -158,15 +158,27 @@ export function applyThemeStyles(settings, containerElement) {
   if (colors) {
     if (colors.primary) root.style.setProperty('--color-primary', colors.primary);
     if (colors.secondary) root.style.setProperty('--color-secondary', colors.secondary);
+    if (colors.accent) root.style.setProperty('--color-accent', colors.accent);
     if (colors.background) {
       root.style.setProperty('--color-bg', colors.background);
-      if (theme.preset === 'custom') {
-        root.style.setProperty('--color-bg-gradient', colors.background);
+      if (colors.background.toLowerCase() === '#ffdada') {
+        root.style.setProperty('--color-bg-gradient', 'linear-gradient(135deg, #FFDADA 0%, #fff0f3 50%, #fcd6df 100%)');
+      } else {
+        root.style.setProperty('--color-bg-gradient', `linear-gradient(135deg, ${colors.background} 0%, #ffffff 100%)`);
       }
+    }
+    if (colors.surface) {
+      root.style.setProperty('--color-surface', colors.surface);
+      root.style.setProperty('--card-bg', colors.surface);
     }
     if (colors.text) root.style.setProperty('--color-text', colors.text);
     if (colors.buttonBg) root.style.setProperty('--btn-bg', colors.buttonBg);
     if (colors.buttonText) root.style.setProperty('--btn-text', colors.buttonText);
+    if (colors.buttonBorder) {
+      root.style.setProperty('--btn-border', colors.buttonBorder);
+      root.style.setProperty('--color-border', colors.buttonBorder);
+    }
+    if (colors.buttonHover) root.style.setProperty('--btn-hover', colors.buttonHover);
   }
 
   // Font family

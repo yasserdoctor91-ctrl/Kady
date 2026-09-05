@@ -96,22 +96,25 @@ body {
   gap: var(--space-xs);
   padding: 8px 14px;
   border-radius: 9999px;
-  background: var(--btn-bg);
-  border: 1px solid var(--btn-border);
-  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(225, 29, 72, 0.2);
+  color: #374151;
   font-size: 0.875rem;
   font-weight: var(--font-weight-medium);
   cursor: pointer;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   transition: all var(--transition-fast);
   text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 0 10px rgba(255, 218, 218, 0.4);
 }
 
 .header-action-btn:hover {
-  background: var(--btn-hover);
+  background: #ffffff;
+  border-color: #e11d48;
+  color: #e11d48;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgba(225, 29, 72, 0.12), 0 0 18px rgba(255, 218, 218, 0.8);
 }
 
 .header-action-btn:active {
@@ -145,15 +148,15 @@ body {
   object-fit: contain;
   background: #ffffff;
   padding: 12px;
-  border: 2px solid rgba(255, 218, 218, 0.8);
-  box-shadow: 0 12px 30px rgba(225, 29, 72, 0.08), 0 0 24px rgba(255, 218, 218, 0.8);
+  border: 2.5px solid #ffc0d0;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25), 0 0 24px rgba(255, 192, 208, 0.7);
   animation: avatarAura 5s ease-in-out infinite;
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
 }
 
 .profile-avatar:hover {
   transform: translateY(-4px) scale(1.04);
-  box-shadow: 0 18px 40px rgba(225, 29, 72, 0.12), 0 0 35px rgba(255, 218, 218, 1);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35), 0 0 35px #ffc0d0;
 }
 
 .brand-logo-badge {
@@ -220,22 +223,23 @@ body {
   gap: 8px;
   padding: 6px 16px;
   border-radius: 9999px;
-  background: var(--btn-bg);
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid #FFDADA;
+  color: #be123c;
   font-size: 0.85rem;
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
   transition: all var(--transition-fast);
   margin-top: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05), 0 0 14px rgba(255, 218, 218, 0.5);
 }
 
 .website-pill-btn:hover {
-  background: var(--color-primary);
-  color: #ffffff;
+  background: #ffffff;
+  color: #e11d48;
+  border-color: #e11d48;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.25);
+  box-shadow: 0 6px 18px rgba(225, 29, 72, 0.12), 0 0 22px rgba(255, 218, 218, 0.85);
 }
 
 .profile-status-pill {
@@ -276,7 +280,7 @@ body {
   width: 100%;
 }
 
-/* Link Cards Visual Effects - Water Wave Fluid Animation & Kady Brand Colors (#FFDADA) */
+/* Link Cards Visual Effects - Elegant Pure White Cards with #FFDADA Borders & Subtle Glow */
 .link-card {
   position: relative;
   display: flex;
@@ -284,94 +288,46 @@ body {
   gap: var(--space-md);
   padding: 16px 20px;
   border-radius: var(--btn-radius);
-  /* Liquid animated moving gradient background blending #FFDADA rose shades */
-  background: linear-gradient(
-    125deg,
-    #ffffff 0%,
-    #fff5f6 20%,
-    #FFDADA 40%,
-    #fff0f3 60%,
-    #ffc4cb 80%,
-    #ffe4e8 100%
-  );
-  background-size: 280% 280%;
-  animation: liquidWaterFlow 8s ease-in-out infinite alternate;
-  border: 1.5px solid rgba(255, 182, 193, 0.6);
-  color: #1f2937;
+  background: var(--btn-bg, #ffffff);
+  border: 1.5px solid var(--btn-border, #FFDADA);
+  color: var(--btn-text, #1f2937);
   text-decoration: none;
   font-weight: var(--font-weight-semibold);
   font-size: 0.95rem;
-  box-shadow: 0 6px 20px -4px rgba(225, 29, 72, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.05), 0 0 12px rgba(255, 218, 218, 0.5);
+  animation: calmPinkPulse 4s ease-in-out infinite;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
   overflow: hidden;
-  backdrop-filter: blur(10px);
-}
-
-/* Continuous liquid surface wave ripple sheen */
-.link-card::before {
-  content: '';
-  position: absolute;
-  top: -60%;
-  left: -120%;
-  width: 75%;
-  height: 220%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255, 255, 255, 0.85) 0%,
-    rgba(255, 255, 255, 0.4) 45%,
-    transparent 70%
-  );
-  transform: rotate(20deg);
-  animation: fluidWaveMotion 7s ease-in-out infinite;
-  pointer-events: none;
-}
-
-.link-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.45) 0%,
-    rgba(255, 255, 255, 0) 50%,
-    rgba(255, 218, 218, 0.25) 100%
-  );
-  pointer-events: none;
-  border-radius: inherit;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .link-card:hover {
-  border-color: #f43f5e;
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 16px 32px -6px rgba(244, 63, 94, 0.25), 0 0 20px rgba(255, 218, 218, 0.5);
-  animation-duration: 4s; /* Speed up water flow animation on hover */
+  background: var(--btn-hover, #fff0f3);
+  border-color: #f472b6;
+  color: var(--btn-text, #1f2937);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(225, 29, 72, 0.12), 0 0 20px rgba(255, 218, 218, 0.85);
 }
 
 .link-card:active {
   transform: translateY(-1px) scale(0.98);
 }
 
-/* Featured Links - Deep Liquid Water Wave Gradient with Kady Velvet Rose & Soft Blush */
+/* Featured Links - Highlighted with Soft Rose Tint */
 .link-card-featured {
-  background: linear-gradient(
-    125deg,
-    #881337 0%,
-    #9f1239 25%,
-    #be123c 50%,
-    #e11d48 75%,
-    #4c0519 100%
-  );
-  background-size: 300% 300%;
-  animation: liquidWaterFlow 6s ease-in-out infinite alternate;
-  border-color: rgba(255, 218, 218, 0.6);
-  color: #ffffff;
-  box-shadow: 0 10px 28px -4px rgba(136, 19, 55, 0.35), 0 0 18px rgba(255, 218, 218, 0.4);
+  background: linear-gradient(135deg, #ffffff 0%, #fff4f6 100%);
+  border: 1.5px solid #f472b6;
+  color: var(--btn-text, #1f2937);
+  box-shadow: 0 6px 18px rgba(225, 29, 72, 0.08), 0 0 16px rgba(255, 218, 218, 0.7);
+  animation: featuredPinkPulse 3.2s ease-in-out infinite;
 }
 
 .link-card-featured:hover {
-  border-color: #ffffff;
-  box-shadow: 0 18px 38px -5px rgba(136, 19, 55, 0.5), 0 0 30px rgba(255, 218, 218, 0.6);
-  animation-duration: 3s;
+  background: #ffffff;
+  border-color: #e11d48;
+  color: #1f2937;
+  box-shadow: 0 12px 28px rgba(225, 29, 72, 0.15), 0 0 24px rgba(255, 218, 218, 0.95);
 }
 
 .link-card-icon {
@@ -381,34 +337,38 @@ body {
   width: 42px;
   height: 42px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.9);
+  background: #fff0f3;
+  border: 1px solid #FFDADA;
   flex-shrink: 0;
   color: #e11d48;
-  box-shadow: 0 2px 8px rgba(244, 63, 94, 0.2);
+  box-shadow: 0 2px 8px rgba(225, 29, 72, 0.06), 0 0 10px rgba(255, 218, 218, 0.4);
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease, color 0.3s ease;
   z-index: 1;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .link-card:hover .link-card-icon {
-  transform: scale(1.18) rotate(-4deg);
-  background: #ffffff;
-  color: #be123c;
+  transform: scale(1.15) rotate(-3deg);
+  background: #e11d48;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.25), 0 0 18px rgba(255, 218, 218, 0.85);
 }
 
 .link-card-featured .link-card-icon {
-  background: rgba(255, 255, 255, 0.25);
-  color: #ffffff;
-  backdrop-filter: blur(4px);
+  background: #ffe4e9;
+  border: 1px solid #f472b6;
+  color: #be123c;
 }
 
 .link-card-featured:hover .link-card-icon {
-  background: rgba(255, 255, 255, 0.4);
+  background: #e11d48;
   color: #ffffff;
 }
 
 [data-theme="dark"] .link-card-icon {
-  background: rgba(255, 255, 255, 0.1);
-  color: currentColor;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
 }
 
 .link-card-content {
@@ -424,7 +384,9 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 0.98rem;
+  font-weight: 600;
   letter-spacing: -0.01em;
+  color: var(--btn-text, #1f2937);
 }
 
 .link-card-badge {
@@ -434,23 +396,25 @@ body {
   font-size: 0.68rem;
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.04em;
-  background: rgba(255, 255, 255, 0.25);
-  color: #ffffff;
+  background: #FFDADA;
+  border: 1px solid rgba(225, 29, 72, 0.25);
+  color: #be123c;
   margin-top: 3px;
-  backdrop-filter: blur(4px);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 0 10px rgba(255, 218, 218, 0.6);
   animation: badgePulse 3s ease-in-out infinite;
 }
 
 .link-card-arrow {
-  color: var(--color-text-muted);
+  color: #9ca3af;
   transition: transform var(--transition-fast), color var(--transition-fast);
   flex-shrink: 0;
 }
 
 .link-card:hover .link-card-arrow {
-  color: var(--color-text);
-  transform: translateX(4px);
+  color: #e11d48;
+  transform: translateX(-4px);
 }
 
 /* Toolbar Footer */
@@ -471,19 +435,24 @@ body {
   gap: 6px;
   padding: 10px 16px;
   border-radius: 12px;
-  background: var(--btn-bg);
-  border: 1px solid var(--btn-border);
-  color: var(--color-text-secondary);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #FFDADA;
+  color: #374151;
   font-size: 0.85rem;
   font-weight: var(--font-weight-medium);
   cursor: pointer;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 0 10px rgba(255, 218, 218, 0.4);
   transition: all var(--transition-fast);
 }
 
 .toolbar-btn:hover {
-  color: var(--color-text);
-  background: var(--btn-hover);
-  transform: translateY(-1px);
+  color: #be123c;
+  background: #ffffff;
+  border-color: #f472b6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.12), 0 0 16px rgba(255, 218, 218, 0.7);
 }
 
 .toolbar-btn:active {
@@ -495,7 +464,7 @@ body {
   margin-top: var(--space-2xl);
   text-align: center;
   font-size: 0.8rem;
-  color: var(--color-text-muted);
+  color: #6b7280;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -503,14 +472,15 @@ body {
 }
 
 .footer-brand-link {
-  color: var(--color-text-secondary);
-  text-decoration: none;
+  color: #be123c;
+  text-decoration: underline;
   font-weight: var(--font-weight-semibold);
-  transition: color var(--transition-fast);
+  transition: color var(--transition-fast), opacity var(--transition-fast);
 }
 
 .footer-brand-link:hover {
-  color: var(--color-primary);
+  color: #e11d48;
+  opacity: 1;
 }
 
 /* Empty State */

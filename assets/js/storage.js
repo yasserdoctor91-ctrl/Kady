@@ -3,8 +3,8 @@
  * Manages LocalStorage persistence, defaults, export, and import.
  */
 
-const STORAGE_KEY = 'linkpage_settings_kady_v3';
-const LEGACY_STORAGE_KEYS = ['linkpage_settings_kady_v2', 'linkpage_settings_kady_v1', 'linkpage_settings'];
+const STORAGE_KEY = 'linkpage_settings_kady_v6';
+const LEGACY_STORAGE_KEYS = ['linkpage_settings_kady_v5', 'linkpage_settings_kady_v4', 'linkpage_settings_kady_v3', 'linkpage_settings_kady_v2', 'linkpage_settings_kady_v1', 'linkpage_settings'];
 
 export const DEFAULT_SETTINGS = {
   brand: {
@@ -28,7 +28,7 @@ export const DEFAULT_SETTINGS = {
     glassBlur: '16px'
   },
   colors: {
-    primary: '#FFDADA',
+    primary: '#e11d48',
     secondary: '#f472b6',
     background: '#FFDADA',
     surface: '#ffffff',
@@ -55,7 +55,7 @@ export const DEFAULT_SETTINGS = {
     {
       id: 'l_fb',
       platform: 'Facebook',
-      label: 'صفحتنا على فيسبوك',
+      label: 'فيسبوك',
       url: 'https://www.facebook.com/share/1BU8LP7iX8/',
       enabled: true,
       featured: false,
@@ -64,7 +64,7 @@ export const DEFAULT_SETTINGS = {
     {
       id: 'l_tiktok',
       platform: 'TikTok',
-      label: 'حسابنا على تيك توك',
+      label: 'تيك توك',
       url: 'https://www.tiktok.com/@user5079433482615?_r=1&_t=ZS-98WAJ3ILOaO',
       enabled: true,
       featured: false,
@@ -73,7 +73,7 @@ export const DEFAULT_SETTINGS = {
     {
       id: 'l_ig',
       platform: 'Instagram',
-      label: 'حسابنا على إنستغرام',
+      label: 'انستقرام',
       url: 'https://www.instagram.com/kdy.kady?igsh=cmM1dHBvaXp1ZGpv',
       enabled: true,
       featured: false,
@@ -82,7 +82,7 @@ export const DEFAULT_SETTINGS = {
     {
       id: 'l_wa',
       platform: 'WhatsApp',
-      label: 'تواصل عبر واتساب (+201005019951)',
+      label: 'واتس اب',
       url: 'https://wa.me/201005019951',
       enabled: true,
       featured: true,
@@ -91,10 +91,10 @@ export const DEFAULT_SETTINGS = {
     {
       id: 'l_map',
       platform: 'Google Maps',
-      label: 'موقعنا على الخريطة',
+      label: 'الموقع او العنوان',
       url: 'https://maps.app.goo.gl/c4mdKVMu5gmt5iyJ7?g_st=aw',
       enabled: true,
-      featured: true,
+      featured: false,
       badge: 'الموقع'
     }
   ],
@@ -130,6 +130,12 @@ function mergeWithDefaults(parsed) {
   merged.brand.name = 'Kady';
   merged.brand.description = 'Kady لمستحضرات التجميل';
   merged.brand.website = '';
+
+  // Migrate legacy colors to the requested #FFDADA rose palette
+  if (!parsed.colors || parsed.colors.background !== '#FFDADA' || parsed.colors.background === '#b8326a') {
+    merged.colors = { ...DEFAULT_SETTINGS.colors };
+  }
+
   if (!merged.logo.url || merged.logo.url.includes('eldoctor_logo') || merged.logo.url.includes('el doctor logo')) {
     merged.logo.url = './logo.svg';
   }
@@ -138,16 +144,16 @@ function mergeWithDefaults(parsed) {
   }
 
   // Exact 5 links specification & order requested by the user:
-  // 1. Facebook
-  // 2. TikTok
-  // 3. Instagram
-  // 4. WhatsApp (+201005019951)
-  // 5. Google Maps (الموقع او العنوان)
+  // 1. فيسبوك (Facebook)
+  // 2. تيك توك (TikTok)
+  // 3. انستقرام (Instagram)
+  // 4. واتس اب (WhatsApp)
+  // 5. الموقع او العنوان (Google Maps)
   merged.links = [
     {
       id: 'l_fb',
       platform: 'Facebook',
-      label: 'صفحتنا على فيسبوك',
+      label: 'فيسبوك',
       url: 'https://www.facebook.com/share/1BU8LP7iX8/',
       enabled: true,
       featured: false,
@@ -156,7 +162,7 @@ function mergeWithDefaults(parsed) {
     {
       id: 'l_tiktok',
       platform: 'TikTok',
-      label: 'حسابنا على تيك توك',
+      label: 'تيك توك',
       url: 'https://www.tiktok.com/@user5079433482615?_r=1&_t=ZS-98WAJ3ILOaO',
       enabled: true,
       featured: false,
@@ -165,7 +171,7 @@ function mergeWithDefaults(parsed) {
     {
       id: 'l_ig',
       platform: 'Instagram',
-      label: 'حسابنا على إنستغرام',
+      label: 'انستقرام',
       url: 'https://www.instagram.com/kdy.kady?igsh=cmM1dHBvaXp1ZGpv',
       enabled: true,
       featured: false,
@@ -174,7 +180,7 @@ function mergeWithDefaults(parsed) {
     {
       id: 'l_wa',
       platform: 'WhatsApp',
-      label: 'تواصل عبر واتساب (+201005019951)',
+      label: 'واتس اب',
       url: 'https://wa.me/201005019951',
       enabled: true,
       featured: true,
@@ -183,10 +189,10 @@ function mergeWithDefaults(parsed) {
     {
       id: 'l_map',
       platform: 'Google Maps',
-      label: 'موقعنا على الخريطة',
+      label: 'الموقع او العنوان',
       url: 'https://maps.app.goo.gl/c4mdKVMu5gmt5iyJ7?g_st=aw',
       enabled: true,
-      featured: true,
+      featured: false,
       badge: 'الموقع'
     }
   ];

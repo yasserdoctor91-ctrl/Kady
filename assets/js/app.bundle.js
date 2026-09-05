@@ -2104,8 +2104,8 @@
   });
 
   // assets/js/storage.js
-  var STORAGE_KEY = "linkpage_settings_kady_v3";
-  var LEGACY_STORAGE_KEYS = ["linkpage_settings_kady_v2", "linkpage_settings_kady_v1", "linkpage_settings"];
+  var STORAGE_KEY = "linkpage_settings_kady_v6";
+  var LEGACY_STORAGE_KEYS = ["linkpage_settings_kady_v5", "linkpage_settings_kady_v4", "linkpage_settings_kady_v3", "linkpage_settings_kady_v2", "linkpage_settings_kady_v1", "linkpage_settings"];
   var DEFAULT_SETTINGS = {
     brand: {
       name: "Kady",
@@ -2130,7 +2130,7 @@
       glassBlur: "16px"
     },
     colors: {
-      primary: "#FFDADA",
+      primary: "#e11d48",
       secondary: "#f472b6",
       background: "#FFDADA",
       surface: "#ffffff",
@@ -2157,7 +2157,7 @@
       {
         id: "l_fb",
         platform: "Facebook",
-        label: "\u0635\u0641\u062D\u062A\u0646\u0627 \u0639\u0644\u0649 \u0641\u064A\u0633\u0628\u0648\u0643",
+        label: "\u0641\u064A\u0633\u0628\u0648\u0643",
         url: "https://www.facebook.com/share/1BU8LP7iX8/",
         enabled: true,
         featured: false,
@@ -2166,7 +2166,7 @@
       {
         id: "l_tiktok",
         platform: "TikTok",
-        label: "\u062D\u0633\u0627\u0628\u0646\u0627 \u0639\u0644\u0649 \u062A\u064A\u0643 \u062A\u0648\u0643",
+        label: "\u062A\u064A\u0643 \u062A\u0648\u0643",
         url: "https://www.tiktok.com/@user5079433482615?_r=1&_t=ZS-98WAJ3ILOaO",
         enabled: true,
         featured: false,
@@ -2175,7 +2175,7 @@
       {
         id: "l_ig",
         platform: "Instagram",
-        label: "\u062D\u0633\u0627\u0628\u0646\u0627 \u0639\u0644\u0649 \u0625\u0646\u0633\u062A\u063A\u0631\u0627\u0645",
+        label: "\u0627\u0646\u0633\u062A\u0642\u0631\u0627\u0645",
         url: "https://www.instagram.com/kdy.kady?igsh=cmM1dHBvaXp1ZGpv",
         enabled: true,
         featured: false,
@@ -2184,7 +2184,7 @@
       {
         id: "l_wa",
         platform: "WhatsApp",
-        label: "\u062A\u0648\u0627\u0635\u0644 \u0639\u0628\u0631 \u0648\u0627\u062A\u0633\u0627\u0628 (+201005019951)",
+        label: "\u0648\u0627\u062A\u0633 \u0627\u0628",
         url: "https://wa.me/201005019951",
         enabled: true,
         featured: true,
@@ -2193,10 +2193,10 @@
       {
         id: "l_map",
         platform: "Google Maps",
-        label: "\u0645\u0648\u0642\u0639\u0646\u0627 \u0639\u0644\u0649 \u0627\u0644\u062E\u0631\u064A\u0637\u0629",
+        label: "\u0627\u0644\u0645\u0648\u0642\u0639 \u0627\u0648 \u0627\u0644\u0639\u0646\u0648\u0627\u0646",
         url: "https://maps.app.goo.gl/c4mdKVMu5gmt5iyJ7?g_st=aw",
         enabled: true,
-        featured: true,
+        featured: false,
         badge: "\u0627\u0644\u0645\u0648\u0642\u0639"
       }
     ],
@@ -2230,6 +2230,9 @@
     merged.brand.name = "Kady";
     merged.brand.description = "Kady \u0644\u0645\u0633\u062A\u062D\u0636\u0631\u0627\u062A \u0627\u0644\u062A\u062C\u0645\u064A\u0644";
     merged.brand.website = "";
+    if (!parsed.colors || parsed.colors.background !== "#FFDADA" || parsed.colors.background === "#b8326a") {
+      merged.colors = { ...DEFAULT_SETTINGS.colors };
+    }
     if (!merged.logo.url || merged.logo.url.includes("eldoctor_logo") || merged.logo.url.includes("el doctor logo")) {
       merged.logo.url = "./logo.svg";
     }
@@ -2240,7 +2243,7 @@
       {
         id: "l_fb",
         platform: "Facebook",
-        label: "\u0635\u0641\u062D\u062A\u0646\u0627 \u0639\u0644\u0649 \u0641\u064A\u0633\u0628\u0648\u0643",
+        label: "\u0641\u064A\u0633\u0628\u0648\u0643",
         url: "https://www.facebook.com/share/1BU8LP7iX8/",
         enabled: true,
         featured: false,
@@ -2249,7 +2252,7 @@
       {
         id: "l_tiktok",
         platform: "TikTok",
-        label: "\u062D\u0633\u0627\u0628\u0646\u0627 \u0639\u0644\u0649 \u062A\u064A\u0643 \u062A\u0648\u0643",
+        label: "\u062A\u064A\u0643 \u062A\u0648\u0643",
         url: "https://www.tiktok.com/@user5079433482615?_r=1&_t=ZS-98WAJ3ILOaO",
         enabled: true,
         featured: false,
@@ -2258,7 +2261,7 @@
       {
         id: "l_ig",
         platform: "Instagram",
-        label: "\u062D\u0633\u0627\u0628\u0646\u0627 \u0639\u0644\u0649 \u0625\u0646\u0633\u062A\u063A\u0631\u0627\u0645",
+        label: "\u0627\u0646\u0633\u062A\u0642\u0631\u0627\u0645",
         url: "https://www.instagram.com/kdy.kady?igsh=cmM1dHBvaXp1ZGpv",
         enabled: true,
         featured: false,
@@ -2267,7 +2270,7 @@
       {
         id: "l_wa",
         platform: "WhatsApp",
-        label: "\u062A\u0648\u0627\u0635\u0644 \u0639\u0628\u0631 \u0648\u0627\u062A\u0633\u0627\u0628 (+201005019951)",
+        label: "\u0648\u0627\u062A\u0633 \u0627\u0628",
         url: "https://wa.me/201005019951",
         enabled: true,
         featured: true,
@@ -2276,10 +2279,10 @@
       {
         id: "l_map",
         platform: "Google Maps",
-        label: "\u0645\u0648\u0642\u0639\u0646\u0627 \u0639\u0644\u0649 \u0627\u0644\u062E\u0631\u064A\u0637\u0629",
+        label: "\u0627\u0644\u0645\u0648\u0642\u0639 \u0627\u0648 \u0627\u0644\u0639\u0646\u0648\u0627\u0646",
         url: "https://maps.app.goo.gl/c4mdKVMu5gmt5iyJ7?g_st=aw",
         enabled: true,
-        featured: true,
+        featured: false,
         badge: "\u0627\u0644\u0645\u0648\u0642\u0639"
       }
     ];
@@ -2792,15 +2795,27 @@
     if (colors) {
       if (colors.primary) root.style.setProperty("--color-primary", colors.primary);
       if (colors.secondary) root.style.setProperty("--color-secondary", colors.secondary);
+      if (colors.accent) root.style.setProperty("--color-accent", colors.accent);
       if (colors.background) {
         root.style.setProperty("--color-bg", colors.background);
-        if (theme.preset === "custom") {
-          root.style.setProperty("--color-bg-gradient", colors.background);
+        if (colors.background.toLowerCase() === "#ffdada") {
+          root.style.setProperty("--color-bg-gradient", "linear-gradient(135deg, #FFDADA 0%, #fff0f3 50%, #fcd6df 100%)");
+        } else {
+          root.style.setProperty("--color-bg-gradient", `linear-gradient(135deg, ${colors.background} 0%, #ffffff 100%)`);
         }
+      }
+      if (colors.surface) {
+        root.style.setProperty("--color-surface", colors.surface);
+        root.style.setProperty("--card-bg", colors.surface);
       }
       if (colors.text) root.style.setProperty("--color-text", colors.text);
       if (colors.buttonBg) root.style.setProperty("--btn-bg", colors.buttonBg);
       if (colors.buttonText) root.style.setProperty("--btn-text", colors.buttonText);
+      if (colors.buttonBorder) {
+        root.style.setProperty("--btn-border", colors.buttonBorder);
+        root.style.setProperty("--color-border", colors.buttonBorder);
+      }
+      if (colors.buttonHover) root.style.setProperty("--btn-hover", colors.buttonHover);
     }
     if (typography.fontFamily) {
       root.style.setProperty("--font-family-base", `'${typography.fontFamily}', sans-serif`);
